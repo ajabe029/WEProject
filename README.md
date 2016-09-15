@@ -1,3 +1,3 @@
 # WEProject
 
-Welcome to our project template...
+Welcome to our project template
