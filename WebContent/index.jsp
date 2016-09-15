@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="img/anonymous_mask.ico">
 
-    <title>Theme Template for Bootstrap</title>
+    <title>Theme Template for Bootstrap..</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
