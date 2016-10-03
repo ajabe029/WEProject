@@ -21,7 +21,7 @@
 	
 	    <script src="js/ie-emulation-modes-warning.js"></script>
   	</head>
-  	<body id="page">
+  	<body>
 <!-- Carousel start -->
         <ul class="cb-slideshow">
             <li><span>Image 01</span></li>
