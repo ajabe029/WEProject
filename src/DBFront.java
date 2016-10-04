@@ -1,3 +1,6 @@
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,6 +13,7 @@ public class DBFront {
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String userName = "root";
 	private static String dbpassword = "soccer";
+	private static String salt = "RaNdOm$G3NeRateD%Sa1t$#@%324325^%$#^4";
 	
 	public static int register(String firstname, String lastname, String username, String password, String email, String confirmPassword){
 		Connection conn = null;
@@ -21,9 +25,8 @@ public class DBFront {
 			conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
 			
 			regStmt = conn.prepareStatement("INSERT INTO Users(username, password, firstname, lastname, email, status) VALUES (?,?,?,?,?,?)");
-			System.out.println(username);
 			regStmt.setString(1, username);
-			regStmt.setString(2, password);
+			regStmt.setString(2, md5Encrypt(password + salt));
 			regStmt.setString(3, firstname);
 			regStmt.setString(4, lastname);
 			regStmt.setString(5, email);
@@ -65,7 +68,7 @@ public class DBFront {
 			// Prepared statement
 			prepstmt = conn.prepareStatement("SELECT * FROM Users WHERE username=? AND password=?");
 			prepstmt.setString(1, username);
-			prepstmt.setString(2, pass);
+			prepstmt.setString(2, md5Encrypt(pass + salt));
 
 			result = prepstmt.executeQuery();
 			status = result.next();
@@ -96,5 +99,27 @@ public class DBFront {
 			}
 		}
 		return status;
+	}
+	
+	public static String md5Encrypt(String input){
+		
+		String MD5 = null;
+		
+		if(input == null) return null;
+		
+		try{
+		
+		MessageDigest message = MessageDigest.getInstance("MD5");
+		
+		message.update(input.getBytes(), 0, input.length());
+		
+		MD5 = new BigInteger(1, message.digest()).toString(16);
+		
+		} catch (NoSuchAlgorithmException ex){
+			ex.printStackTrace();
+		}
+		
+		return MD5;
+		
 	}
 }
