@@ -1,3 +1,14 @@
+<%
+	String username = null;
+	if(session.getAttribute("username") == null){
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+		dispatcher.forward(request,response);
+	}
+	else {
+		username = session.getAttribute("username").toString();
+	}
+%>
+
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -27,6 +38,9 @@
                     </li>
                     <li>
                         <a href="#">Logout</a>
+                    </li>
+                    <li>
+                    	<a href="#"> Welcome <% out.print(username); %> </a>
                     </li>
                 </ul>
             </div>

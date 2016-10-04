@@ -24,6 +24,33 @@ public class DBFront {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
 			
+			if(username.trim().isEmpty()){
+				return 0;
+			}
+			if(password.trim().isEmpty()){
+				return 0;
+			}
+			
+			if(email.trim().isEmpty()){
+				return 0;
+			}
+			
+			if(firstname.trim().isEmpty()){
+				return 0;
+			}
+			
+			if(lastname.trim().isEmpty()){
+				return 0;
+			}
+			
+			if(confirmPassword.trim().isEmpty()){
+				return 0;
+			}
+			if(confirmPassword.compareTo(password) != 0){
+				return 0;
+			}
+			
+			
 			regStmt = conn.prepareStatement("INSERT INTO Users(username, password, firstname, lastname, email, status) VALUES (?,?,?,?,?,?)");
 			regStmt.setString(1, username);
 			regStmt.setString(2, md5Encrypt(password + salt));
