@@ -64,7 +64,7 @@
 						         		<div class="col-xs-6">
 							            	<div class="field-wrap">
 							              		<label for="regFirstname">First Name<span class="req">*</span></label>
-							              		<input type="text" name="regFirstname"  autocomplete="off" />
+							              		<input type="text" name="regFirstname" required="required" autocomplete="off" />
 						            		</div>
 					            		</div>
 					            		<div class="col-xs-6">
