@@ -1,13 +1,3 @@
-<%
-	if(session.getAttribute("username") == null){
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-		dispatcher.forward(request,response);
-	}
-	else {
-		String username = session.getAttribute("username").toString();
-	}
-%>
-
 <!DOCTYPE html>
 <html lang="en">
   	<head>
