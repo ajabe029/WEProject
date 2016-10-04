@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet{
 		
 		HttpSession session = request.getSession(false);
 		if(session!=null)
-		session.setAttribute("name", username);
+		session.setAttribute("username", username);
 
 		if(DBFront.validate(username, password)){  
 			RequestDispatcher rd=request.getRequestDispatcher("/welcome.jsp");  
