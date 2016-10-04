@@ -1,16 +1,7 @@
-<%
-	if(session.getAttribute("username") == null){
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-		dispatcher.forward(request,response);
-	}
-	else {
-		String username = session.getAttribute("username").toString();
-	}
-%>
-
 <!DOCTYPE html>
 <html lang="en">
   	<head>
+  	<!-- Test -->
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
