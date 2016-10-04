@@ -26,13 +26,13 @@ public class LoginServlet extends HttpServlet{
 		session.setAttribute("name", username);
 
 		if(DBFront.validate(username, password)){  
-			RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp");  
+			RequestDispatcher rd=request.getRequestDispatcher("/welcome.jsp");  
 			rd.forward(request,response);  
 		}  
 		else{  
-			out.print("<p style=\"color:red\">Sorry username or password error</p>");  
-			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
-			rd.include(request,response);  
+			request.setAttribute("errorMessage", "Invalid user or password");  
+			RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");  
+			rd.forward(request,response);  
 		}  
 
 		out.close();  

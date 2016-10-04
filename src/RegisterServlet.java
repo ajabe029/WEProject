@@ -30,9 +30,9 @@ public class RegisterServlet extends HttpServlet{
 			rd.forward(request,response);  
 		}  
 		else{  
-			out.print("<p>Error Registering</p>");  
-			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
-			rd.include(request,response);  
+			request.setAttribute("errorMessage", "Error Registering");  
+			RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");  
+			rd.forward(request,response); 
 		}  
 
 		out.close();  

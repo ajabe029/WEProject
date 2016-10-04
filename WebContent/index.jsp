@@ -40,6 +40,14 @@
 			<div class="row">
 				<div class="col-xs-6 col-xs-offset-6">
 					<div class="login-form panel panel-default">
+						<% if(null!=request.getAttribute("errorMessage"))
+						    {%>
+						    <div class="alert alert-danger">
+						    	<%out.println(request.getAttribute("errorMessage"));%>
+						    </div>
+						    <%
+						    }
+						%>
 		      			<h1 class="logo">Incredible Recipes</h1>
 		      			<br>
 					    <ul class="nav nav-tabs">
@@ -50,56 +58,60 @@
 						<div class="tab-content">
 						 	<div id="signup">   
 						   		<h2 class="panel-heading">Sign Up</h2>
-					          	<form action="/" method="post">
+					          	<form action="registerServlet" method="post">
 					          	<div class="panel-body">
 						         	<div class="row">
 						         		<div class="col-xs-6">
 							            	<div class="field-wrap">
-							              		<label>First Name<span class="req">*</span></label>
-							              		<input type="text" required="required" autocomplete="off" />
+							              		<label for="regFirstname">First Name<span class="req">*</span></label>
+							              		<input type="text" name="regFirstname" required="required" autocomplete="off" />
 						            		</div>
 					            		</div>
 					            		<div class="col-xs-6">
 							            	<div class="field-wrap">
-							              		<label>Last Name<span class="req">*</span></label>
-							              		<input type="text" required="required" autocomplete="off"/>
+							              		<label for="regLastname">Last Name<span class="req">*</span></label>
+							              		<input type="text" name="regLastname" required="required" autocomplete="off"/>
 							            	</div>
 						            	</div>
 						          	</div>
 						          	<div class="row">
 							          	<div class="col-xs-12">
 							       			<div class="field-wrap">
-						            			<label>Username<span class="req">*</span></label>
-						            			<input type="text" required="required" autocomplete="off"/>
+						            			<label for="regUsername">Username<span class="req">*</span></label>
+						            			<input type="text" name="regUsername" required="required" autocomplete="off"/>
 						          			</div>
 						          			<div class="field-wrap">
-						            			<label>Email Address<span class="req">*</span></label>
-						            			<input type="email" required="required" autocomplete="off"/>
+						            			<label for="regEmail">Email Address<span class="req">*</span></label>
+						            			<input type="email" name="regEmail" required="required" autocomplete="off"/>
 						          			</div>
 						          			<div class="field-wrap">
-						      					<label>Choose Password<span class="req">*</span></label>
-						            			<input type="password" required="required" autocomplete="off"/>
+						      					<label for="regPassword">Choose Password<span class="req">*</span></label>
+						            			<input type="password" name="regPassword" required="required" autocomplete="off"/>
+						          			</div>
+						          			<div class="field-wrap">
+						      					<label for="regConfirmPassword">Confirm Password<span class="req">*</span></label>
+						            			<input type="password" name="regConfirmPassword" required="required" autocomplete="off"/>
 						          			</div>
 							          	</div>
 						          	</div>
 						      	</div>
-						        <button type="submit" class="button button-block">Register</button>
+						        <button type="submit" class="button button-block" value="login">Register</button>
 				          		</form>
 							</div>
 						        
 						    <div id="login">   
 						    	<h2 class="panel-heading">Login</h2>
-						        <form action="/" method="post">
+						        <form action="loginServlet" method="post">
 						        	<div class="panel-body">
 						        		<div class="row">
 						        			<div class="col-xs-12">
 										        <div class="field-wrap">
-									            	<label>Username<span class="req">*</span></label>
-									            	<input type="text" required="required" autocomplete="off"/>
+									            	<label for="loginUsername">Username<span class="req">*</span></label>
+									            	<input type="text" name="loginUsername" required="required" autocomplete="off"/>
 										        </div>
 									          	<div class="field-wrap">
-									            	<label>Password<span class="req">*</span></label>
-									            	<input type="password"required="required" autocomplete="off"/>
+									            	<label for="loginPassword">Password<span class="req">*</span></label>
+									            	<input type="password" name="loginPassword" required="required" autocomplete="off"/>
 									          	</div>
 										     <p class="forgot"><a href="#">Forgot Password?</a></p>
 										     </div>
