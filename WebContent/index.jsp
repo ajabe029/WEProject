@@ -21,7 +21,7 @@
 	
 	    <script src="js/ie-emulation-modes-warning.js"></script>
   	</head>
-  	<body id="page">
+  	<body>
 <!-- Carousel start -->
         <ul class="cb-slideshow">
             <li><span>Image 01</span></li>
@@ -40,6 +40,14 @@
 			<div class="row">
 				<div class="col-xs-6 col-xs-offset-6">
 					<div class="login-form panel panel-default">
+						<% if(null!=request.getAttribute("errorMessage"))
+						    {%>
+						    <div class="alert alert-danger">
+						    	<%out.println(request.getAttribute("errorMessage"));%>
+						    </div>
+						    <%
+						    }
+						%>
 		      			<h1 class="logo">Incredible Recipes</h1>
 		      			<br>
 					    <ul class="nav nav-tabs">
@@ -56,7 +64,7 @@
 						         		<div class="col-xs-6">
 							            	<div class="field-wrap">
 							              		<label for="regFirstname">First Name<span class="req">*</span></label>
-							              		<input type="text" name="regFirstname" required="required" autocomplete="off" />
+							              		<input type="text" name="regFirstname"  autocomplete="off" />
 						            		</div>
 					            		</div>
 					            		<div class="col-xs-6">
