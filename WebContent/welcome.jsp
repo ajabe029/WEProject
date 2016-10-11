@@ -1,15 +1,6 @@
 <%@include file="common/header.jsp"%>
 <%@include file="common/navbar.jsp"%>
 
-<%@page import="java.util.ResourceBundle"%>
-<%@page import="java.util.Locale"%>
-
-<%
-String language = new String("EN");
-String country = new String("CA");
-Locale currentLocale = new Locale(language, country);
-ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-%>
     <!-- Page Content -->
     <div class="container">
         <div class="row">
