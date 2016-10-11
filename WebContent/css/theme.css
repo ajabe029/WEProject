@@ -171,3 +171,28 @@ body {
   width: auto;
 }
 
+.update-field {
+	display:block;
+	text-align: left;
+}
+
+.update-field label {
+	position: static;
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+
+.update-field  input {
+	width: 70%;
+	padding: 2px 3px;
+	font-size: 14px;
+}
+
+#edit button {
+	margin-top: 10px;
+	font-size: 1.5rem;
+	width: 20%;
+	line-height: 30%;
+	float: left;
+	margin-right: 8px;
+}

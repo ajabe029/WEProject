@@ -34,7 +34,7 @@
                         <a href="#">My Saved</a>
                     </li>
                     <li>
-                        <a href="#">My Account</a>
+                        <a href="myaccount.jsp">My Account</a>
                     </li>
                     <li>
                         <a href="#">Logout</a>
