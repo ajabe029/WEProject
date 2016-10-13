@@ -39,7 +39,11 @@
 				            <li><a href="myaccount.jsp">My Account</a></li>
 				            <li><a href="#">Logout</a></li>
 				            <li role="separator" class="divider"></li>
-				            <li><a href="#" onclick="changeLanguage('FR');">French</a></li>
+				            <%if(language.equals("EN")){ %>
+				            <li><a href="changeLang.jsp">French</a></li>
+				            <%}else{ %>
+				            <li><a href="changeLang.jsp">English</a></li>
+				            <%} %>
           				</ul>
         			</li>
                  </ul>   

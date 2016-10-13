@@ -24,10 +24,12 @@ public class LoginServlet extends HttpServlet{
 		HttpSession session = request.getSession(false);
 		if(session!=null)
 		session.setAttribute("username", username);
+		session.setAttribute("language", "EN");
 
 		if(DBFront.validate(username, password)){  
-			RequestDispatcher rd=request.getRequestDispatcher("/welcome.jsp");  
-			rd.forward(request,response);  
+//			RequestDispatcher rd=request.getRequestDispatcher("/welcome.jsp");  
+//			rd.forward(request,response);
+			response.sendRedirect("welcome.jsp");
 		}  
 		else{  
 			request.setAttribute("errorMessage", "Invalid user or password");  
