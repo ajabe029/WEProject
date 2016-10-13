@@ -81,6 +81,51 @@ public class DBFront {
 		return rowsEffected;
 	}
 	
+	public static int updateInfo(String firstname, String lastname, String email, String username, String oldUsername){
+		Connection conn = null;
+		PreparedStatement regStmt = null;
+		int rowsEffected = 0;
+		
+		try{
+			Class.forName(driver).newInstance();
+			conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
+			
+			/*
+			if(confirmPassword.compareTo(password) != 0){
+				return 0;
+			}
+			*/
+			
+			
+			regStmt = conn.prepareStatement("UPDATE Users SET firstname=?, lastname=?, email=?, username=? WHERE username=?");
+			regStmt.setString(1, firstname);
+			regStmt.setString(2, lastname);
+			regStmt.setString(3, email);
+			regStmt.setString(4, username);
+			regStmt.setString(5, oldUsername);
+			
+			rowsEffected =  regStmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (regStmt != null) {
+				try {
+					regStmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return rowsEffected;
+	}
+	
 	public static boolean validate(String username, String pass) {		
 		boolean status = false;
 		Connection conn = null;

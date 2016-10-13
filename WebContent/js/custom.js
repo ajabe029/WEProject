@@ -41,3 +41,13 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(600);
   
 });
+
+$('#editButton').on('click', function() {
+	$('#info').attr('style', 'display:none');
+	$('#edit').attr('style', '');
+});
+
+$('#updateCancelButton').on('click', function() {
+	$('#info').attr('style', '');
+	$('#edit').attr('style', 'display:none');
+});

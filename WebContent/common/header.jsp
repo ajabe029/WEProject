@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   	<head>
+  	<!-- Test -->
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,3 +29,13 @@
 	    <script src="js/ie-emulation-modes-warning.js"></script>
   	</head>
   	<body>
+  	<%@page import="java.util.ResourceBundle"%>
+	<%@page import="java.util.Locale"%>
+	<%
+		String language = session.getAttribute("language").toString();
+		String country = "CA";
+		Locale currentLocale = new Locale(language, country);
+		ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+	%>
+	
+	<input type="hidden" id="lang"/>

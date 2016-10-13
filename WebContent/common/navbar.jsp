@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="welcome.jsp">
                 <img style="width: 64px;" src="img/anonymous_mask.ico" alt="Incredible Recipes">Incredible Recipes</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,18 +31,22 @@
                         <a href="#">My Inventory</a>
                     </li>
                     <li>
-                        <a href="#">My Saved</a>
+                        <a href="#">My Saved Recipes</a>
                     </li>
-                    <li>
-                        <a href="#">My Account</a>
-                    </li>
-                    <li>
-                        <a href="#">Logout</a>
-                    </li>
-                    <li>
-                    	<a href="#"> Welcome <% out.print(username); %> </a>
-                    </li>
-                </ul>
+                    <li class="dropdown">
+          				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Welcome <% out.print(username); %> <span class="caret"></span></a>
+          				<ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+				            <li><a href="myaccount.jsp">My Account</a></li>
+				            <li><a href="#">Logout</a></li>
+				            <li role="separator" class="divider"></li>
+				            <%if(language.equals("EN")){ %>
+				            <li><a href="changeLang.jsp">French</a></li>
+				            <%}else{ %>
+				            <li><a href="changeLang.jsp">English</a></li>
+				            <%} %>
+          				</ul>
+        			</li>
+                 </ul>   
             </div>
             <!-- /.navbar-collapse -->
         </div>
