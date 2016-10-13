@@ -196,3 +196,7 @@ body {
 	float: left;
 	margin-right: 8px;
 }
+
+.color-change {
+	background-color: #e4e4e7;
+}
