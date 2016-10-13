@@ -20,14 +20,14 @@ public class LoginServlet extends HttpServlet{
 		
 		String username = request.getParameter("loginUsername");  
 		String password = request.getParameter("loginPassword"); 
+		
+		HttpSession session = request.getSession(false);
+		if(session!=null)
+		session.setAttribute("username", username);
+		session.setAttribute("language", "EN");
 
 		if(DBFront.validate(username, password)){  
-			HttpSession session = request.getSession(false);
-			if(session!=null)
-			session.setAttribute("username", username);
-			
-			RequestDispatcher rd=request.getRequestDispatcher("/welcome.jsp");  
-			rd.forward(request,response);  
+			response.sendRedirect("welcome.jsp");
 		}  
 		else{  
 			request.setAttribute("errorMessage", "Invalid user or password");  
