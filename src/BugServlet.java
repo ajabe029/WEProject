@@ -26,11 +26,13 @@ public class BugServlet extends HttpServlet{
 
 		if(DBFront.reportBug(bugName, bugCategory, bugDescription, username) > 0){  
 			request.setAttribute("bugSuccessMessage", "Issue Reported Successfully");
-			response.sendRedirect("reportbug.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("reportbug.jsp");  
+			rd.forward(request,response);  
 		}  
 		else{  
 			request.setAttribute("bugErrorMessage", "Error Reporting Issue");  
-			response.sendRedirect("reportbug.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("reportbug.jsp");  
+			rd.forward(request,response);  
 		}  
 
 		out.close();  
