@@ -51,3 +51,8 @@ $('#updateCancelButton').on('click', function() {
 	$('#info').attr('style', '');
 	$('#edit').attr('style', 'display:none');
 });
+
+var max = 250;
+$("#bugDescription").keyup(function(e){
+		$("#characters").text("Characters Left: " + (max - $(this).val().length));
+	});

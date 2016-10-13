@@ -81,6 +81,44 @@ public class DBFront {
 		return rowsEffected;
 	}
 	
+	public static int reportBug(String name, String category, String description, String username){
+		Connection conn = null;
+		PreparedStatement regStmt = null;
+		int rowsEffected = 0;
+		
+		try{
+			Class.forName(driver).newInstance();
+			conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
+			
+			regStmt = conn.prepareStatement("INSERT INTO Issues(name, category, description, status, user_reporting) SELECT ?,?,?,?,users.user_id FROM users WHERE username=?");
+			regStmt.setString(1, name);
+			regStmt.setString(2, category);
+			regStmt.setString(3, description);
+			regStmt.setString(4, "0");
+			regStmt.setString(5, username);
+			
+			rowsEffected =  regStmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (regStmt != null) {
+				try {
+					regStmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return rowsEffected;
+	}
+	
 	public static int updateInfo(String firstname, String lastname, String email, String username, String oldUsername){
 		Connection conn = null;
 		PreparedStatement regStmt = null;
