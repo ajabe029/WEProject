@@ -17,7 +17,7 @@
 						    	<% out.println(request.getAttribute("bugSuccessMessage"));%>
 						    </div>
 						    <% } %>
-					<form action="bugServlet" method="post">
+					<form action="report-issue" method="post">
 						<div class="update-field">
 							<label for="bugName">Name: <span class="req">*</span></label>
 							<input type="text" name="bugName" placeholder="Name" required="required" autocomplete="off" />

@@ -44,7 +44,7 @@
 
 	<servlet-mapping>
 		<servlet-name>reportbug</servlet-name>
-		<url-pattern>/bugServlet</url-pattern>
+		<url-pattern>/report-issue</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
