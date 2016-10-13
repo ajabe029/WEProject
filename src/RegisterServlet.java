@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class RegisterServlet extends HttpServlet{
 
@@ -16,6 +17,8 @@ public class RegisterServlet extends HttpServlet{
 
 		response.setContentType("text/html");  
 		PrintWriter out = response.getWriter();  
+		
+		HttpSession session = request.getSession(false);
 		
 		String username = request.getParameter("regUsername");  
 		String password = request.getParameter("regPassword"); 
@@ -30,7 +33,8 @@ public class RegisterServlet extends HttpServlet{
 			rd.forward(request,response);  
 		}  
 		else{  
-			request.setAttribute("errorMessage", "Error Registering");  
+			request.setAttribute("errorMessage", "Error Registering");
+			session.setAttribute("logoutMessage", "");
 			RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");  
 			rd.forward(request,response); 
 		}  
