@@ -32,23 +32,10 @@
   	<%@page import="java.util.ResourceBundle"%>
 	<%@page import="java.util.Locale"%>
 	<%
-		String language = new String("EN");
-		String country = new String("CA");
+		String language = session.getAttribute("language").toString();
+		String country = "CA";
 		Locale currentLocale = new Locale(language, country);
 		ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 	%>
 	
-	<script type="text/javascript">
-		function changeLanguage(lang) {
-		  var src;
-		  switch(lang) {
-		    case "EN":
-		    src = "alljavaforEN.js";
-		    break;
-		    case "FR":
-		    default:
-		    src = "alljavaforFR.js";
-		  }
-		  document.getElementById("script").src = src;
-		}
-</script>
+	<input type="hidden" id="lang"/>
