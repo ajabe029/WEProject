@@ -9,7 +9,7 @@
 	    <meta name="author" content="Parsnip Systems">
 	    <link rel="icon" href="img/anonymous_mask.ico">
 	
-	    <title>Sign-Up</title>
+	    <title>Incredible Recipes</title>
 	
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -44,6 +44,15 @@
 						    {%>
 						    <div class="alert alert-danger">
 						    	<%out.println(request.getAttribute("errorMessage"));%>
+						    </div>
+						    <%
+						    }
+						%>
+						<% if(request.getSession().getAttribute("logoutMessage") != null 
+						&& (!session.getAttribute("logoutMessage").toString().isEmpty()))
+						    {%>
+						    <div class="alert alert-success">
+						    	<%out.println(session.getAttribute("logoutMessage"));%>
 						    </div>
 						    <%
 						    }

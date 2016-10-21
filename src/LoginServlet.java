@@ -20,10 +20,10 @@ public class LoginServlet extends HttpServlet{
 		
 		String username = request.getParameter("loginUsername");  
 		String password = request.getParameter("loginPassword"); 
-		
+
 		HttpSession session = request.getSession(false);
 		
-		if(DBFront.validate(username, password)){  
+		if(DBFront.validate(username, password)){
 			if(session!=null)
 			session.setAttribute("username", username);
 			session.setAttribute("language", "EN");
@@ -37,5 +37,4 @@ public class LoginServlet extends HttpServlet{
 		}  
 
 		out.close();  
-	}  
-}  
+	}  }  
