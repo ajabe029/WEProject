@@ -1,10 +1,14 @@
 <%@include file="common/header.jsp"%>
 <%@include file="common/navbar.jsp"%>
 
+<script type="text/javascript">
+	document.title = "Welcome Page";
+</script>
+
    <!-- Page Content -->
       
     <div class="container-fluid">
-    <h1 class="bg-primary text-center"><%=messages.getString("test")%></h1>
+    <h1 class="bg-primary text-center"><%=messages.getString("welcome")%></h1>
       	<div class="row">
    			<div class="col-xs-4">
                		<div class="panel color-change">
@@ -44,6 +48,5 @@
           	</div>
       	</div>
 	</div>
-
     
 <%@include file="common/footer.jsp"%>
