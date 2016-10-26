@@ -5,7 +5,7 @@
 	version="2.5">
 	<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>LoginServlet</servlet-class>
+		<servlet-class>com.servlets.LoginServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -19,7 +19,7 @@
 	
 	<servlet>
 		<servlet-name>register</servlet-name>
-		<servlet-class>RegisterServlet</servlet-class>
+		<servlet-class>com.servlets.RegisterServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -29,7 +29,7 @@
 	
 	<servlet>
 		<servlet-name>updateinfo</servlet-name>
-		<servlet-class>UpdateServlet</servlet-class>
+		<servlet-class>com.servlets.UpdateServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -39,12 +39,21 @@
 	
 		<servlet>
 		<servlet-name>reportbug</servlet-name>
-		<servlet-class>BugServlet</servlet-class>
+		<servlet-class>com.servlets.BugServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>reportbug</servlet-name>
 		<url-pattern>/report-issue</url-pattern>
 	</servlet-mapping>
+	
+	    <servlet>
+        <servlet-name>issues</servlet-name>
+        <servlet-class>com.servlets.IssuesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>issues</servlet-name>
+        <url-pattern>/welcome-admin</url-pattern>
+    </servlet-mapping>
 	
 </web-app>

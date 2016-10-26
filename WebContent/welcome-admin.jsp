@@ -1,19 +1,42 @@
 <%@include file="common/header.jsp"%>
-<%@include file="common/navbar.jsp"%>
+<%@include file="common/navbar-admin.jsp"%>
+<%@ page import="com.user.*" %>
+<%
+String title = messages.getString("welcomeTitleAdmin");
+%>
+<script type="text/javascript">
+	document.title = "<%=title%>";
+</script>
 
-<div class="sidebar-nav">
-    <div class="well" style="width:300px; padding: 8px 0;">
-		<ul class="nav nav-list"> 
-		  <li class="nav-header">Admin Menu</li>        
-		  <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
-          <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
-          <li><a href="#"><i class="icon-comment"></i> Comments <span class="badge badge-info">10</span></a></li>
-		  <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
-          <li class="divider"></li>
-		  <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
-		  <li><a href="#"><i class="icon-share"></i> Logout</a></li>
-		</ul>
-	</div>
+<div class="container">
+
+<table class="table table-condensed" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th>Issue #</th>
+            <th>Issue</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Date Issued</th>
+            <th>User Affected</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${issues}" var="issue">
+            <tr>
+            	<td>${issue.issueId}</td>
+            	<td>${issue.issueName}</td>
+            	<td>${issue.category}</td>
+            	<td>${issue.description}</td>
+            	<td>${issue.dateCreated}</td>
+            	<td>${issue.user}</td>
+            	<td><button type="button" class="btn btn-primary">Issue has been resolved</button></td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>    
 </div>
+
 
 <%@include file="common/footer.jsp"%>

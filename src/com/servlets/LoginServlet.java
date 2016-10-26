@@ -1,3 +1,4 @@
+package com.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -8,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class RegisterServlet extends HttpServlet{
+import com.jdbc.db.*;
+import com.common.*;
+
+public class LoginServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,27 +22,28 @@ public class RegisterServlet extends HttpServlet{
 		response.setContentType("text/html");  
 		PrintWriter out = response.getWriter();  
 		
+		String username = request.getParameter("loginUsername");  
+		String password = request.getParameter("loginPassword");
+		int userType = DBFront.getUserType(username, password);
+
 		HttpSession session = request.getSession(false);
 		
-		String username = request.getParameter("regUsername");  
-		String password = request.getParameter("regPassword"); 
-		String firstname = request.getParameter("regFirstname");
-		String lastname = request.getParameter("regLastname");
-		String email = request.getParameter("regEmail");
-		String conPassword = request.getParameter("regConfirmPassword");
-
-		if(DBFront.register(firstname, lastname, username, password, email, conPassword) > 0){  
-			out.println("<p> Registration Success </p>");
-			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
-			rd.forward(request,response);  
+		if(DBFront.validate(username, password)){
+			if(session!=null)
+			session.setAttribute("username", username);
+			session.setAttribute("language", "EN");
+			if(userType == CommonConstants.ADMIN){
+				response.sendRedirect("welcome-admin");
+			}else{
+				response.sendRedirect("welcome.jsp");
+			}
 		}  
 		else{  
-			request.setAttribute("errorMessage", "Error Registering");
+			request.setAttribute("errorMessage", "Invalid user or password");
 			session.setAttribute("logoutMessage", "");
 			RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");  
-			rd.forward(request,response); 
+			rd.forward(request,response);  
 		}  
 
 		out.close();  
-	}  
-}  
+	}  }  
