@@ -47,4 +47,13 @@
 		<url-pattern>/report-issue</url-pattern>
 	</servlet-mapping>
 	
+	    <servlet>
+        <servlet-name>issues</servlet-name>
+        <servlet-class>com.servlets.IssuesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>issues</servlet-name>
+        <url-pattern>/welcome-admin</url-pattern>
+    </servlet-mapping>
+	
 </web-app>

@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="welcome.jsp">
+                <a class="navbar-brand" href="welcome-admin">
                 <img style="width: 64px;" src="img/anonymous_mask.ico" alt="Incredible Recipes">Incredible Recipes</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->

@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("username", username);
 			session.setAttribute("language", "EN");
 			if(userType == CommonConstants.ADMIN){
-				response.sendRedirect("welcome-admin.jsp");
+				response.sendRedirect("welcome-admin");
 			}else{
 				response.sendRedirect("welcome.jsp");
 			}
