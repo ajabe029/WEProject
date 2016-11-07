@@ -55,5 +55,13 @@
         <servlet-name>issues</servlet-name>
         <url-pattern>/welcome-admin</url-pattern>
     </servlet-mapping>
-	
+    <servlet>
+    	<servlet-name>recipe</servlet-name>
+    	<servlet-class>com.servlets.RecipeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>recipe</servlet-name>
+    	<url-pattern>/recipeServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
