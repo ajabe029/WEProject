@@ -7,7 +7,7 @@ String title = messages.getString("welcomeTitleAdmin");
 <script type="text/javascript">
 	document.title = "<%=title%>";
 </script>
-
+<form method="post" action="">
 <div class="container">
 
 <table class="table table-condensed" style="border-collapse:collapse;">
@@ -31,12 +31,13 @@ String title = messages.getString("welcomeTitleAdmin");
             	<td>${issue.description}</td>
             	<td>${issue.dateCreated}</td>
             	<td>${issue.user}</td>
-            	<td><button type="button" class="btn btn-primary">Issue has been resolved</button></td>
+            	<td><button type="submit" value="resolve" class="btn btn-primary">Issue has been resolved</button></td>
             </tr>
         </c:forEach>
     </tbody>
 </table>    
 </div>
+</form>
 
 
 <%@include file="common/footer.jsp"%>

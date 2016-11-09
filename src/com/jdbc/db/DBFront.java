@@ -89,7 +89,7 @@ public class DBFront {
 			//Class.forName(driver).newInstance();
 			//conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
 			
-			regStmt = conn.prepareStatement("INSERT INTO Issues(name, category, description, status, user_reporting) SELECT ?,?,?,?,users.user_id FROM users WHERE username=?");
+			regStmt = conn.prepareStatement("INSERT INTO Issues(name, category, description, status, user_id) SELECT ?,?,?,?,users.user_id FROM users WHERE username=?");
 			regStmt.setString(1, name);
 			regStmt.setString(2, category);
 			regStmt.setString(3, description);

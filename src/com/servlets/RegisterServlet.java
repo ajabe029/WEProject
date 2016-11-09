@@ -31,7 +31,7 @@ public class RegisterServlet extends HttpServlet{
 		String conPassword = request.getParameter("regConfirmPassword");
 
 		if(DBFront.register(firstname, lastname, username, password, email, conPassword) > 0){  
-			out.println("<p> Registration Success </p>");
+			request.setAttribute("signup", "Your account has been successfully created!");
 			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
 			rd.forward(request,response);  
 		}  

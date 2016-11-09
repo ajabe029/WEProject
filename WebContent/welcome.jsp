@@ -12,11 +12,11 @@
       	<div class="row">
    			<div class="col-xs-4">
                		<div class="panel color-change">
-	                   <h2 class="panel-heading">Friends</h2>
+	                   <h2 class="panel-heading"><%=messages.getString("friends")%></h2>
 	                   <div class="panel-body">
 	                       <p> content </p>
 	                   </div>
-	                   <button class="btn btn-primary center-block">Add friends</button>
+	                   <button class="btn btn-primary center-block"><%=messages.getString("add")%> <%=messages.getString("friends")%></button>
 	                   <br>
 	               </div>
           	</div>
@@ -24,11 +24,11 @@
           	<div class="row">
       		<div class="col-xs-12">
       			<div class="panel color-change">
-                   <h2 class="panel-heading">Recipes</h2>
+                   <h2 class="panel-heading"><%=messages.getString("recipes")%></h2>
                    <div class="panel-body">
                        <p> content </p>
                    </div>
-                   <button class="btn btn-primary center-block">Add Recipes</button>
+                   <button class="btn btn-primary center-block"><%=messages.getString("add")%> <%=messages.getString("recipes")%></button>
                    <br>
             	</div>
       		</div>
@@ -36,11 +36,11 @@
       	<div class="row">
       		<div class="col-xs-12">
 				<div class="panel color-change">
-                   <h2 class="panel-heading">Inventory</h2>
+                   <h2 class="panel-heading"><%=messages.getString("inventory")%></h2>
                    <div class="panel-body">
                        <p> content </p>
                    </div>
-                   <button class="btn btn-primary center-block">Manage Inventory</button>
+                   <button class="btn btn-primary center-block"><%=messages.getString("manage")%> <%=messages.getString("inventory")%></button>
                    <br>
                </div>
       		</div>

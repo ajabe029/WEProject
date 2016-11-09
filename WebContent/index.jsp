@@ -57,6 +57,14 @@
 						    <%
 						    }
 						%>
+						<% if(null!=request.getAttribute("signup"))
+						    {%>
+						    <div class="alert alert-success">
+						    	<%out.println(request.getAttribute("signup"));%>
+						    </div>
+						    <%
+						    }
+						%>
 		      			<h1 class="logo">Incredible Recipes</h1>
 		      			<br>
 					    <ul class="nav nav-tabs">

@@ -2,25 +2,29 @@
 <%@include file="common/navbar.jsp"%>
 <%@include file="common/database.jsp"%>
 
+    <% 
+        PreparedStatement prepstmt = connection.prepareStatement("SELECT * FROM Users WHERE username=?");
+		prepstmt.setString(1, username);
+	
+		ResultSet result = prepstmt.executeQuery();
+	
+		String firstname = null; 
+		String lastname = null;
+		String email = null;
+		String datecreated = null;
+     %>
+
     <!-- Page Content -->
     <div class="container">
+    <h1 class="bg-primary">My Account</h1>
         <div class="row">
         	<div class="col-xs-5">
-				<h1>My Account</h1>
 				<p>(<a id="editButton" href="#">Edit</a>)</p>
-            <hr />
-            
-             <% 
-            PreparedStatement prepstmt = connection.prepareStatement("SELECT * FROM Users WHERE username=?");
-			prepstmt.setString(1, username);
-			
-			ResultSet result = prepstmt.executeQuery();
-			
-			String firstname = null; 
-			String lastname = null;
-			String email = null;
-			String datecreated = null;
-        	%>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-xs-5">	
             
             <%while(result.next()){ %>
             <div id="info">

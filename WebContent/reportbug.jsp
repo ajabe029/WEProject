@@ -1,9 +1,9 @@
 <%@include file="common/header.jsp"%>
 <%@include file="common/navbar.jsp"%>
 
-<h1 class="text-center"> Report an Issue</h1>
-<hr />
 <div class="container-fluid">
+<h1 class="text-center bg-primary"> Report an Issue</h1>
+<hr />
 	<div class="row">
 		<div class="col-xs-5">
 			<div class="panel color-change">

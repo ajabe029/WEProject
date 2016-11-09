@@ -18,7 +18,7 @@ public class IssuesDAO {
     public List<Issues> getIssues() throws SQLException {
         StringBuffer query = new StringBuffer();
         query.append("SELECT * FROM issues \n")
-        .append("LEFT JOIN users ON issues.user_reporting = users.user_id");
+        .append("LEFT JOIN users ON issues.user_id = users.user_id");
         ResultSet rs = null;
         List<Issues> issues = new ArrayList<Issues>();
         try {
