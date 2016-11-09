@@ -31,7 +31,7 @@
                         <a href="#">My Inventory</a>
                     </li>
                     <li>
-                        <a href="#">My Saved Recipes</a>
+                        <a href="myrecipes.jsp">My Saved Recipes</a>
                     </li>
                     <li class="dropdown">
           				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Welcome <% out.print(username); %> <span class="caret"></span></a>
