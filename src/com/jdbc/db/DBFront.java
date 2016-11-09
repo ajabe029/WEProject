@@ -1,28 +1,25 @@
+package com.jdbc.db;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.user.*;
+
 public class DBFront {
-	private static String url = "jdbc:mysql://localhost:3306/";
-	private static String dbName = "irecipe";
-	private static String driver = "com.mysql.jdbc.Driver";
-	private static String userName = "root";
-	private static String dbpassword = "soccer";
-	private static String salt = "RaNdOm$G3NeRateD%Sa1t$#@%324325^%$#^4";
+	
+	public static String salt = "RaNdOm$G3NeRateD%Sa1t$#@%324325^%$#^4";
 	
 	public static int register(String firstname, String lastname, String username, String password, String email, String confirmPassword){
-		Connection conn = null;
+		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement regStmt = null;
 		int rowsEffected = 0;
 		
 		try{
-			Class.forName(driver).newInstance();
-			conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
+			//Class.forName(driver).newInstance();
 			
 			if(username.trim().isEmpty()){
 				return 0;
@@ -51,13 +48,14 @@ public class DBFront {
 			}
 			
 			
-			regStmt = conn.prepareStatement("INSERT INTO Users(username, password, firstname, lastname, email, status) VALUES (?,?,?,?,?,?)");
+			regStmt = conn.prepareStatement("INSERT INTO Users(username, password, firstname, lastname, email, status, user_type) VALUES (?,?,?,?,?,?,?)");
 			regStmt.setString(1, username);
 			regStmt.setString(2, md5Encrypt(password + salt));
 			regStmt.setString(3, firstname);
 			regStmt.setString(4, lastname);
 			regStmt.setString(5, email);
 			regStmt.setString(6, "null");
+			regStmt.setString(7, "0");
 			
 			rowsEffected =  regStmt.executeUpdate();
 		} catch (Exception e) {
@@ -82,13 +80,13 @@ public class DBFront {
 	}
 	
 	public static int reportBug(String name, String category, String description, String username){
-		Connection conn = null;
+		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement regStmt = null;
 		int rowsEffected = 0;
 		
 		try{
-			Class.forName(driver).newInstance();
-			conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
+			//Class.forName(driver).newInstance();
+			//conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
 			
 			regStmt = conn.prepareStatement("INSERT INTO Issues(name, category, description, status, user_reporting) SELECT ?,?,?,?,users.user_id FROM users WHERE username=?");
 			regStmt.setString(1, name);
@@ -119,14 +117,78 @@ public class DBFront {
 		return rowsEffected;
 	}
 	
+	public static int addRecipe(String username, String name, String description, String prepTime, String cookTime, String instructions, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement regStmt = null;
+		int rowsaffected = 0;
+		ResultSet result = null;
+		
+		try{
+			
+			regStmt = conn.prepareStatement("INSERT INTO Recipes(name, description, preptime, cooktime, instructions) VALUES (?,?,?,?,?)");
+			regStmt.setString(1, name);
+			regStmt.setString(2, description);
+			regStmt.setString(3, prepTime);
+			regStmt.setString(4, cookTime);
+			regStmt.setString(5, instructions);
+			regStmt.executeUpdate();
+			
+			regStmt = conn.prepareStatement("SELECT LAST_INSERT_ID()");
+			result = regStmt.executeQuery();
+			result.next();
+			String recipeid = result.getString(1);
+			
+			for(int i = 0; i < ingredients.length; i++){
+				regStmt = conn.prepareStatement("INSERT INTO Recipe_Ingredients(recipe_id, ingredient_id, amount_required, units) VALUES (?,?,?,?)");
+				regStmt.setString(1, recipeid);
+				regStmt.setString(2, ingredients[i]);
+				regStmt.setString(3, ingredientsQuantities[i]);
+				regStmt.setString(4, ingredientsQUnits[i]);
+				regStmt.executeUpdate();
+			}
+			
+			regStmt = conn.prepareStatement("INSERT INTO User_Recipes(recipe_id, user_id) SELECT ?,users.user_id FROM users WHERE username=?");
+			regStmt.setString(1, recipeid);
+			regStmt.setString(2, username);
+			rowsaffected = regStmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (regStmt != null) {
+				try {
+					regStmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(result != null){
+				try{
+					result.close();
+				}catch (SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+		return rowsaffected;
+	}
+	
 	public static int updateInfo(String firstname, String lastname, String email, String username, String oldUsername){
-		Connection conn = null;
+		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement regStmt = null;
 		int rowsEffected = 0;
 		
 		try{
-			Class.forName(driver).newInstance();
-			conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
+			//Class.forName(driver).newInstance();
+			//conn = DriverManager.getConnection(url+dbName, userName, dbpassword);
 			
 			/*
 			if(confirmPassword.compareTo(password) != 0){
@@ -166,14 +228,11 @@ public class DBFront {
 	
 	public static boolean validate(String username, String pass) {		
 		boolean status = false;
-		Connection conn = null;
+		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement prepstmt = null;
 		ResultSet result = null;
-
 		
 		try {
-			Class.forName(driver).newInstance();
-			conn = DriverManager.getConnection(url + dbName, userName, dbpassword);
 			
 			// Prepared statement
 			prepstmt = conn.prepareStatement("SELECT * FROM Users WHERE username=? AND password=?");
@@ -182,6 +241,9 @@ public class DBFront {
 
 			result = prepstmt.executeQuery();
 			status = result.next();
+			UserDAO userDao = new UserDAO();
+			User user = new User();
+			user = userDao.getUser(result.getInt("user_id"));
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -232,4 +294,51 @@ public class DBFront {
 		return MD5;
 		
 	}
+	
+	public static int getUserType(String username, String pass){
+		int userType = 0;
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement prepstmt = null;
+		ResultSet result = null;
+		
+		try {
+			
+			// Prepared statement
+			prepstmt = conn.prepareStatement("SELECT * FROM Users WHERE username=? AND password=?");
+			prepstmt.setString(1, username);
+			prepstmt.setString(2, md5Encrypt(pass + salt));
+
+			result = prepstmt.executeQuery();
+			while(result.next()){
+				userType = result.getInt("user_type");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (prepstmt != null) {
+				try {
+					prepstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (result != null) {
+				try {
+					result.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return userType;
+	}
+
 }

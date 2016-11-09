@@ -1,3 +1,4 @@
+package com.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.jdbc.db.*;
 
 public class BugServlet extends HttpServlet{
 
@@ -26,11 +28,13 @@ public class BugServlet extends HttpServlet{
 
 		if(DBFront.reportBug(bugName, bugCategory, bugDescription, username) > 0){  
 			request.setAttribute("bugSuccessMessage", "Issue Reported Successfully");
-			response.sendRedirect("reportbug.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("reportbug.jsp");  
+			rd.forward(request,response);  
 		}  
 		else{  
 			request.setAttribute("bugErrorMessage", "Error Reporting Issue");  
-			response.sendRedirect("reportbug.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("reportbug.jsp");  
+			rd.forward(request,response);  
 		}  
 
 		out.close();  

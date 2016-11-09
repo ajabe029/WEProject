@@ -21,23 +21,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="welcome.jsp">
+                <a class="navbar-brand" href="welcome-admin">
                 <img style="width: 64px;" src="img/anonymous_mask.ico" alt="Incredible Recipes">Incredible Recipes</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">My Inventory</a>
-                    </li>
-                    <li>
-                        <a href="myrecipes.jsp">My Saved Recipes</a>
-                    </li>
                     <li class="dropdown">
-          				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Welcome <% out.print(username); %> <span class="caret"></span></a>
+          				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Welcome Admin <% out.print(username); %> <span class="caret"></span></a>
           				<ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
 				            <li><a href="myaccount.jsp">My Account</a></li>
-				            <li><a href="reportbug.jsp">Report Bug</a></li>
 				            <li><a href="logout.jsp">Logout</a></li>
 				            <li role="separator" class="divider"></li>
 				            <%if(session.getAttribute("language").toString().equals("EN")){ %>

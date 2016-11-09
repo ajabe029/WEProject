@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   	<head>
@@ -9,8 +10,7 @@
 	    <meta name="description" content="Welcome Page">
 	    <meta name="author" content="Parsnip Systems">
 	    <link rel="icon" href="img/anonymous_mask.ico">
-	
-	    <title>Sign-Up</title>
+	    <title></title>
 	
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
