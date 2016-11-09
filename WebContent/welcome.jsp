@@ -28,7 +28,9 @@
                    <div class="panel-body">
                        <p> content </p>
                    </div>
-                   <button class="btn btn-primary center-block"><%=messages.getString("add")%> <%=messages.getString("recipes")%></button>
+                   <div class="text-center">
+						<a href="myrecipes.jsp" class="btn btn-info" role="button"><%=messages.getString("add")%> <%=messages.getString("recipes")%></a>
+                   </div>
                    <br>
             	</div>
       		</div>

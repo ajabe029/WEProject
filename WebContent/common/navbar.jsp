@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#">My Inventory</a>
+                        <a href="myinventory.jsp">My Inventory</a>
                     </li>
                     <li>
                         <a href="myrecipes.jsp">My Saved Recipes</a>

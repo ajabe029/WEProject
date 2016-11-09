@@ -62,7 +62,7 @@
     </servlet>
     <servlet-mapping>
     	<servlet-name>recipe</servlet-name>
-    	<url-pattern>/recipeServlet</url-pattern>
+    	<url-pattern>/myrecipes</url-pattern>
     </servlet-mapping>
 	
 </web-app>
