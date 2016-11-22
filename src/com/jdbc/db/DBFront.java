@@ -117,6 +117,56 @@ public class DBFront {
 		return rowsEffected;
 	}
 	
+	public static int updatePassword(String currentEnteredPassword, String newPassword, String username){
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement regStmt = null;
+		ResultSet result = null;
+		String currentPassword = null;
+		int rowsAffected = 0;
+		
+		try {
+			regStmt = conn.prepareStatement("SELECT password FROM Users WHERE username=?");
+			regStmt.setString(1, username);
+			result = regStmt.executeQuery();
+			result.next();
+			currentPassword = result.getString(1);
+			
+			if(md5Encrypt(currentEnteredPassword).compareTo(currentPassword) != 0){
+				return -1;
+			}
+			
+			regStmt = conn.prepareStatement("UPDATE Users SET password=? WHERE username=?");
+			regStmt.setString(1, md5Encrypt(newPassword));
+			regStmt.setString(2, username);
+			rowsAffected = regStmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (regStmt != null) {
+				try {
+					regStmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+			
+			if(rowsAffected > 0){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+	}
+	
 	public static int addRecipe(String username, String name, String description, String prepTime, String cookTime, String[] steps, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement regStmt = null;

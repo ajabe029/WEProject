@@ -44,6 +44,7 @@
         <div id="edit" style="display:none">
 		        	<form action="updateServlet" method="post">
 			            <p class="lead">Account Update</p>
+			            <p><a href="changepassword.jsp">Change Password</a>
 			            <div class="update-field">
 			            	<p><span class="req">*</span><strong>Firstname: </strong></p>
 							<input onClick="this.select();" type="text" name="updateFirstname" value="<%= firstname %>" required="required" autocomplete="off" />

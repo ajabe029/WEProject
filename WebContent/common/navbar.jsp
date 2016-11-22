@@ -1,12 +1,10 @@
 <%
-	String username = null;
-	if(session.getAttribute("username") == null){
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-		dispatcher.forward(request,response);
-	}
-	else {
-		username = session.getAttribute("username").toString();
-	}
+		String username = null;
+		if(session.getAttribute("username") == null){
+			response.sendRedirect("index.jsp");
+		} else {
+			username = session.getAttribute("username").toString();
+		}
 %>
 
 <!-- Navigation -->

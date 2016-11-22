@@ -31,11 +31,18 @@
   	<body>
   	<%@page import="java.util.ResourceBundle"%>
 	<%@page import="java.util.Locale"%>
-	<%
-		String language = session.getAttribute("language").toString();
-		String country = "CA";
-		Locale currentLocale = new Locale(language, country);
+  	
+  	<%
+  		session.setAttribute("language", "EN");
+  		Locale currentLocale = new Locale("EN", "CA");
 		ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-	%>
+  	if(session!= null && session.getAttribute("language") != null){
+  		String language = session.getAttribute("language").toString();
+		String country = "CA";
+		currentLocale = new Locale(language, country);
+		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+  	}
+  	
+  	%>
 	
 	<input type="hidden" id="lang"/>

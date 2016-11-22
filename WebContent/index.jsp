@@ -75,7 +75,7 @@
 						<div class="tab-content">
 						 	<div id="signup">   
 						   		<h2 class="panel-heading">Sign Up</h2>
-					          	<form action="registerServlet" method="post">
+					          	<form action="registerServlet" onsubmit="return confirmPassword()" method="post">
 					          	<div class="panel-body">
 						         	<div class="row">
 						         		<div class="col-xs-6">
@@ -103,11 +103,11 @@
 						          			</div>
 						          			<div class="field-wrap">
 						      					<label for="regPassword">Choose Password<span class="req">*</span></label>
-						            			<input type="password" name="regPassword" required="required" autocomplete="off"/>
+						            			<input id="passwordField" type="password" name="regPassword" required="required" autocomplete="off"/>
 						          			</div>
 						          			<div class="field-wrap">
 						      					<label for="regConfirmPassword">Confirm Password<span class="req">*</span></label>
-						            			<input type="password" name="regConfirmPassword" required="required" autocomplete="off"/>
+						            			<input id="confirmPasswordField" type="password" name="regConfirmPassword" required="required" autocomplete="off"/>
 						          			</div>
 							          	</div>
 						          	</div>

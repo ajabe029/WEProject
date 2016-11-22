@@ -77,3 +77,16 @@ $(".add_step_button").on("click", function(e){ //on add input button click
 $(step_wrapper).on("click",".remove_step_field", function(e){ //user click on remove text
     e.preventDefault(); $(this).parent('div').remove(); stepCount--;
 });
+
+function confirmPassword() {
+    var pass1 = document.getElementById("passwordField").value;
+    var pass2 = document.getElementById("confirmPasswordField").value;
+    var ok = true;
+    if (pass1 != pass2) {
+        //alert("Passwords Do not match");
+        document.getElementById("passwordField").style.borderColor = "#E34234";
+        document.getElementById("confirmPasswordField").style.borderColor = "#E34234";
+        ok = false;
+    }
+    return ok;
+}

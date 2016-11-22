@@ -73,5 +73,14 @@
     	<servlet-name>recipedetails</servlet-name>
     	<url-pattern>/recipe</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>changepassword</servlet-name>
+    	<servlet-class>com.servlets.ChangePassServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>changepassword</servlet-name>
+    	<url-pattern>/changepassword</url-pattern>
+    </servlet-mapping>
 	
 </web-app>
