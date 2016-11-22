@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="myinventory.jsp">My Inventory</a>
+                        <a href="myinventory">My Inventory</a>
                     </li>
                     <li>
-                        <a href="myrecipes.jsp">My Saved Recipes</a>
+                        <a href="myrecipes">My Saved Recipes</a>
                     </li>
                     <li class="dropdown">
           				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Welcome <% out.print(username); %> <span class="caret"></span></a>

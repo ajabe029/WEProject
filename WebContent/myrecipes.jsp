@@ -7,12 +7,36 @@
 </script>
 
 <div class="container-fluid">
-<h1 class="bg-primary text-center">Recipes</h1>
+<h1 class="bg-primary text-center">My Recipes</h1>
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel color-change">
 				<div class="panel-body">
-					<p> No recipes. </p>
+				    <c:choose>
+				        <c:when test="${recipes.isEmpty()}">
+							<p> No recipes. </p>
+				        </c:when>
+				        <c:otherwise>
+				            <table class="table table-condensed" style="border-collapse:collapse;">
+				            	<thead>
+				            		<tr>
+				            			<th>Recipe #</th>
+				            			<th>Recipe Name</th>
+				            			<th>Description</th>
+				            		</tr>
+				            	</thead>
+				            	<tbody>
+	            	        	<c:forEach items="${recipes}" var="recipe">
+				            		<tr>
+				            			<td><a href="recipe?recipe_id=${recipe.recipeID}">${recipe.recipeID}</a></td>
+				            			<td>${recipe.name}</td>
+				            			<td>${recipe.description}</td>
+				            		</tr>
+				            	</c:forEach>		
+				            	</tbody>
+				            </table>	
+				        </c:otherwise>
+				    </c:choose>
 				</div>
 				<a href="addrecipe.jsp"> Add Recipe </a>
 				<br>
@@ -20,36 +44,4 @@
 		</div>
 	</div>
 </div>
-
-<form method="post" action="">
-<div class="container">
-<table class="table table-condensed" style="border-collapse:collapse;">
-    <thead>
-        <tr>
-            <th>Recipe #</th>
-            <th>Recipe Name</th>
-            <th>Description</th>
-            <th>Preparation Time</th>
-            <th>Cooking Time</th>
-            <th>Instructions</th>
-            <th>Date Submitted</th>
-            <th>Date Updated</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach items="${recipes}" var="recipe">
-            <tr>
-            	<td>${recipe.recipeID}</td>
-            	<td>${recipe.name}</td>
-            	<td>${recipe.description}</td>
-            	<td>${recipe.preptime}</td>
-            	<td>${recipe.cooktime}</td>
-            	<td>${recipe.instructions}</td>
-            	<td>${recipe.datecreated}</td>
-            	<td>${recipe.dateupdated}</td>
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>    
-</div>
-</form>
+<%@include file="common/footer.jsp"%>

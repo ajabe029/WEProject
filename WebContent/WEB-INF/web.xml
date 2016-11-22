@@ -64,5 +64,14 @@
     	<servlet-name>recipe</servlet-name>
     	<url-pattern>/myrecipes</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>recipedetails</servlet-name>
+    	<servlet-class>com.servlets.RecipeDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>recipedetails</servlet-name>
+    	<url-pattern>/recipe</url-pattern>
+    </servlet-mapping>
 	
 </web-app>
