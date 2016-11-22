@@ -117,7 +117,7 @@ public class DBFront {
 		return rowsEffected;
 	}
 	
-	public static int addRecipe(String username, String name, String description, String prepTime, String cookTime, String instructions, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
+	public static int addRecipe(String username, String name, String description, String prepTime, String cookTime, String[] steps, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement regStmt = null;
 		int rowsaffected = 0;
@@ -125,18 +125,25 @@ public class DBFront {
 		
 		try{
 			
-			regStmt = conn.prepareStatement("INSERT INTO Recipes(name, description, preptime, cooktime, instructions) VALUES (?,?,?,?,?)");
+			regStmt = conn.prepareStatement("INSERT INTO Recipes(name, description, preptime, cooktime) VALUES (?,?,?,?)");
 			regStmt.setString(1, name);
 			regStmt.setString(2, description);
 			regStmt.setString(3, prepTime);
 			regStmt.setString(4, cookTime);
-			regStmt.setString(5, instructions);
 			regStmt.executeUpdate();
 			
 			regStmt = conn.prepareStatement("SELECT LAST_INSERT_ID()");
 			result = regStmt.executeQuery();
 			result.next();
 			String recipeid = result.getString(1);
+			
+			for(int j = 0; j < steps.length; j++){
+				regStmt = conn.prepareStatement("INSERT INTO Steps(recipe_id, step_index, steptext) VALUES (?,?,?)");
+				regStmt.setString(1, recipeid);
+				regStmt.setInt(2, j);
+				regStmt.setString(3, steps[j]);
+				regStmt.executeUpdate();
+			}
 			
 			for(int i = 0; i < ingredients.length; i++){
 				regStmt = conn.prepareStatement("INSERT INTO Recipe_Ingredients(recipe_id, ingredient_id, amount_required, units) VALUES (?,?,?,?)");

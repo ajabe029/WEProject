@@ -41,17 +41,17 @@ $(document).ready(function(){
 	        e.preventDefault();
 	        if(x < max_fields){ //max input box allowed
 	            x++; //text box increment
-	            $(".ingredient-wrapper").append("<div class=\"update-field\">" +
-	            		"<h4>Ingredient "+ x + "</h4><select style=\"display:block;\" name=\"ingredients\">"
+	            $(".ingredient-wrapper").append("<div class=\"row\"><div class=\"col-xs-3\">" +
+	            		"<h5>Ingredient "+ x + "</h5><select style=\"display:block;\" name=\"ingredients\">"
 	            		<%for(String ingredient : ingredients){
 						out.print("+ \"<option value=\\\"" + count + "\\\">" + ingredient + "</option>\" \n");
 						count++;
 						}count=1;%>
 	            		
-	            		+ "</select><a href=\"#\" class=\"remove_field\">Remove</a><br>"
-	            		+ "<label for=\"ingredientQuantities\">Quantity</label>"
-						+ "<input type=\"number\" name=\"ingredientQuantities\" required=\"required\" autocomplete=\"off\"/>"
-						+	"<select style=\"display:block;\" name=\"ingredientsQUnits\">"
+	            		+ "</select></div><div class=\"col-xs-4\" style=\"padding-right: 0px\"><table>"
+	            		+ "<tr><td><div class=\"update-field\"><h5>Quantity</h5>"
+						+ "<input type=\"number\" name=\"ingredientQuantities\" required=\"required\" autocomplete=\"off\"/></div></td>"
+						+	"<td style=\"padding-bottom: 0px;\"><select style=\"display:block;margin-top:30px;\" name=\"ingredientsQUnits\">"
 						+		"<option value=\"teaspoon\">Teaspoon</option>"
 						+		"<option value=\"tablespoon\">Tablespoon</option>"
 						+		"<option value=\"oz\">Ounce</option>"
@@ -67,12 +67,12 @@ $(document).ready(function(){
 						+		"<option value=\"mg\">Milligram</option>"
 						+		"<option value=\"g\">Gram</option>"
 						+		"<option value=\"kg\">Kilogram</option>"
-						+	"</select></div>"); //add input box
+						+	"</select></td><td><a href=\"#\" style=\"display:block;margin-left:10px;margin-top:30px;\"class=\"remove_field\">Remove</a></td></tr></table></div></div>"); //add input box
 	        }
 	    });
 	    
 	    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-	        e.preventDefault(); $(this).parent('div').remove(); x--;
+	        e.preventDefault(); $(this).parent('td').parent('tr').parent('tbody').parent('table').parent('div').parent('div').remove(); x--;
 	    });
 });
 </script>
@@ -83,7 +83,7 @@ $(document).ready(function(){
    			<div class="col-xs-12">
                		<div class="panel color-change">
 	                   <div class="panel-body">
-	                   <form action="recipeServlet" method="post">
+	                   <form action="myrecipes" method="post">
 	                   		<div class="update-field">
 								<label for="recName">Name<span class="req">*</span></label>
 							 	<input type="text" name="recName" required="required" autocomplete="off"/>
@@ -92,55 +92,80 @@ $(document).ready(function(){
 								<label for="recDescription">Description</label>
 								<input type="text" name="recDescription" autocomplete="off"/>
 							</div>
-							<div class="update-field">
-								<label for="recPreptime">Preparation Time<span class="req">*</span></label>
-								<input type="number" name="recPreptime" required="required" autocomplete="off"/>
-							</div>
-							<div class="update-field">
-								<label for="recCooktime">Cook Time<span class="req">*</span></label>
-								<input type="number" name="recCooktime" required="required" autocomplete="off"/>
-							</div>
-							<div class="update-field">
-								<label for="recInstructions">Instructions<span class="req">*</span></label>
-								<textarea style="margin-bottom: 10px;" cols="25" placeholder="Enter instructions..." name="recInstructions" maxlength="499"></textarea>
-							</div>
-							<div class="ingredient-wrapper">
-							<h3>Ingredients</h3>
-								<div class="update-field">
-									<h5>Ingredient 1</h5>
-									<select style="display:block;" name="ingredients">
-										<%for(String ingredient : ingredients){%>
-										<option value="<%=count %>"><%=ingredient%></option>
-										<%
-										count++;
-										}count=1;%>
-									</select>
-									<label for="ingredientQuantities">Quantity</label>
-									<input type="number" name="ingredientQuantities" required="required" autocomplete="off"/>
-									<select style="display:block;" name="ingredientsQUnits">
-										<option value="teaspoon">Teaspoon</option>
-										<option value="tablespoon">Tablespoon</option>
-										<option value="oz">Ounce</option>
-										<option value="1/2cup">1/2 Cup</option>
-										<option value="cup">Cup</option>
-										<option value="pint">Pint</option>
-										<option value="gallon">Gallon</option>
-										<option value="quart">Quart</option>
-										<option value="ml">Millilitre</option>
-										<option value="l">Litre</option>
-										<option value="dl">Decilitre</option>
-										<option value="lb">Pound</option>
-										<option value="mg">Milligram</option>
-										<option value="g">Gram</option>
-										<option value="kg">Kilogram</option>
-									</select>
+							<div class="row">
+								<div class="col-xs-2">
+									<div class="update-field">
+										<label for="recPreptime">Preparation Time<span class="req">*</span></label>
+										<input type="text" name="recPreptime" required="required" autocomplete="off"/>
+									</div>
+								</div>
+								<div class="col-xs-2">
+									<div class="update-field">
+										<label for="recCooktime">Cook Time<span class="req">*</span></label>
+										<input type="text" name="recCooktime" required="required" autocomplete="off"/>
+									</div>
 								</div>
 							</div>
-							<button class="add_field_button button button-block btn-default">Add another ingredient</button>
-	                   		<button type="submit" class="button button-block btn-default" value="cancel">Submit</button>
+							<div class="step-wrapper" style="margin-bottom: 20px;">
+								<div class="update-field">
+									<label for="steps">Step 1<span class="req">*</span></label>
+									<input type="text" name="steps" required="required" autocomplete="off" />
+								</div>
+							</div>
+							<button class="add_step_button">Add another step</button>
+							<div class="ingredient-wrapper" style="margin-bottom: 50px">
+							<h3>Ingredients</h3>
+							<div class="row">
+									<div class="col-xs-3">
+									<h5>Ingredient 1</h5>
+										<select style="display:block;" name="ingredients">
+											<%for(String ingredient : ingredients){%>
+											<option value="<%=count %>"><%=ingredient%></option>
+											<%
+											count++;
+											}count=1;%>
+										</select>
+									</div>
+									<div class="col-xs-4" style="padding-right: 0px">
+										<table>
+											<tr>
+												<td>
+													<div class="update-field">	
+														<h5>Quantity</h5>
+														<input type="number" name="ingredientQuantities" required="required" autocomplete="off"/>
+													</div>
+												</td>
+												<td style="padding-bottom: 0px;">
+													<select style="display:block;margin-top:30px;" name="ingredientsQUnits">
+														<option value="teaspoon">Teaspoon</option>
+														<option value="tablespoon">Tablespoon</option>
+														<option value="oz">Ounce</option>
+														<option value="1/2cup">1/2 Cup</option>
+														<option value="cup">Cup</option>
+														<option value="pint">Pint</option>
+														<option value="gallon">Gallon</option>
+														<option value="quart">Quart</option>
+														<option value="ml">Millilitre</option>
+														<option value="l">Litre</option>
+														<option value="dl">Decilitre</option>
+														<option value="lb">Pound</option>
+														<option value="mg">Milligram</option>
+														<option value="g">Gram</option>
+														<option value="kg">Kilogram</option>
+													</select>
+												</td>
+											</tr>
+										</table>
+									</div>
+							</div>
+							</div>
+							<button class="add_field_button">Add another ingredient</button>
+	                   		<button type="submit" value="cancel">Submit</button>
 	                   </form>
 	                   </div>
 	               </div>
 	         </div>
 	     </div>
 </div>
+
+<%@include file="common/footer.jsp"%>

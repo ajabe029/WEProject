@@ -29,7 +29,6 @@ public class RecipeServlet extends HttpServlet {
 		String recDescription = request.getParameter("recDescription");
 		String recCookTime = request.getParameter("recCooktime");
 		String recPrepTime = request.getParameter("recPreptime");
-		String recInstructions = request.getParameter("recPreptime");
 		
 		HttpSession session = request.getSession(false);
 		String username = session.getAttribute("username").toString();
@@ -37,8 +36,9 @@ public class RecipeServlet extends HttpServlet {
 		String[] ingredients = request.getParameterValues("ingredients");
 		String[] ingredientsQuantities = request.getParameterValues("ingredientQuantities");
 		String[] ingredientsQUnits = request.getParameterValues("ingredientsQUnits");
+		String[] steps = request.getParameterValues("steps");
 
-		if(DBFront.addRecipe(username, recName, recDescription, recCookTime, recPrepTime, recInstructions, ingredients, ingredientsQuantities, ingredientsQUnits) > 0){  
+		if(DBFront.addRecipe(username, recName, recDescription, recCookTime, recPrepTime, steps, ingredients, ingredientsQuantities, ingredientsQUnits) > 0){  
 			request.setAttribute("recipeSuccessMessage", "Recipe added successfully");
 			RequestDispatcher rd=request.getRequestDispatcher("myrecipes.jsp");  
 			rd.forward(request,response);  
