@@ -125,18 +125,20 @@ public class DBFront {
 		int rowsAffected = 0;
 		
 		try {
-			regStmt = conn.prepareStatement("SELECT password FROM Users WHERE username=?");
+			regStmt = conn.prepareStatement("SELECT password FROM users WHERE username=?");
 			regStmt.setString(1, username);
 			result = regStmt.executeQuery();
 			result.next();
 			currentPassword = result.getString(1);
 			
-			if(md5Encrypt(currentEnteredPassword).compareTo(currentPassword) != 0){
+			String encryptedpassword = md5Encrypt(currentEnteredPassword + salt);
+			
+			if(md5Encrypt(currentEnteredPassword + salt).compareTo(currentPassword) != 0){
 				return -1;
 			}
 			
 			regStmt = conn.prepareStatement("UPDATE Users SET password=? WHERE username=?");
-			regStmt.setString(1, md5Encrypt(newPassword));
+			regStmt.setString(1, md5Encrypt(newPassword + salt));
 			regStmt.setString(2, username);
 			rowsAffected = regStmt.executeUpdate();
 			
