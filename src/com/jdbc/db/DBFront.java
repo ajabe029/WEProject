@@ -169,6 +169,52 @@ public class DBFront {
 			}
 	}
 	
+	public static int addFood(String username, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement regStmt = null;
+		int rowsaffected = 0;
+		ResultSet result = null;
+		
+		try{
+			
+			for(int i = 0; i < ingredients.length; i++){
+				regStmt = conn.prepareStatement("INSERT INTO User_Ingredients(ingredient_id, quantity, units, user_id) VALUES (?,?,?,(SELECT user_id FROM users WHERE username=?))");
+				regStmt.setString(1, ingredients[i]);
+				regStmt.setString(2, ingredientsQuantities[i]);
+				regStmt.setString(3, ingredientsQUnits[i]);
+				regStmt.setString(4, username);
+				regStmt.executeUpdate();
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (regStmt != null) {
+				try {
+					regStmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(result != null){
+				try{
+					result.close();
+				}catch (SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+		return rowsaffected;
+	}
+	
 	public static int addRecipe(String username, String name, String description, String prepTime, String cookTime, String[] steps, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement regStmt = null;

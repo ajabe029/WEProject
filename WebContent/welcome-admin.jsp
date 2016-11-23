@@ -1,6 +1,7 @@
 <%@include file="common/header.jsp"%>
 <%@include file="common/navbar-admin.jsp"%>
 <%@ page import="com.user.*" %>
+
 <%
 String title = messages.getString("welcomeTitleAdmin");
 %>

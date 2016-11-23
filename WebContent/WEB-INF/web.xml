@@ -83,4 +83,14 @@
     	<url-pattern>/changepassword</url-pattern>
     </servlet-mapping>
 	
+	<servlet>
+    	<servlet-name>addfood</servlet-name>
+    	<servlet-class>com.servlets.FoodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>addfood</servlet-name>
+    	<url-pattern>/addfood</url-pattern>
+    </servlet-mapping>
+	
+	
 </web-app>
