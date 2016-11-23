@@ -9,6 +9,11 @@
 					<h2>Change Password</h2>
 				</div>
 				<div class="panel-body">
+					<% if(request.getAttribute("errorMessage")!=null){ %>
+						    <div class="alert alert-danger">
+						    	<% out.println(request.getAttribute("errorMessage"));%>
+						    </div>
+						    <% } %>
 					<form action="changepassword" onsubmit="return confirmPassword()" method="post">
 						<div class="update-field">
 							<label for="currentPassword">Current Password:<span class="req">*</span></label>

@@ -125,18 +125,20 @@ public class DBFront {
 		int rowsAffected = 0;
 		
 		try {
-			regStmt = conn.prepareStatement("SELECT password FROM Users WHERE username=?");
+			regStmt = conn.prepareStatement("SELECT password FROM users WHERE username=?");
 			regStmt.setString(1, username);
 			result = regStmt.executeQuery();
 			result.next();
 			currentPassword = result.getString(1);
 			
-			if(md5Encrypt(currentEnteredPassword).compareTo(currentPassword) != 0){
+			String encryptedpassword = md5Encrypt(currentEnteredPassword + salt);
+			
+			if(md5Encrypt(currentEnteredPassword + salt).compareTo(currentPassword) != 0){
 				return -1;
 			}
 			
 			regStmt = conn.prepareStatement("UPDATE Users SET password=? WHERE username=?");
-			regStmt.setString(1, md5Encrypt(newPassword));
+			regStmt.setString(1, md5Encrypt(newPassword + salt));
 			regStmt.setString(2, username);
 			rowsAffected = regStmt.executeUpdate();
 			
@@ -165,6 +167,52 @@ public class DBFront {
 			else{
 				return 0;
 			}
+	}
+	
+	public static int addFood(String username, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement regStmt = null;
+		int rowsaffected = 0;
+		ResultSet result = null;
+		
+		try{
+			
+			for(int i = 0; i < ingredients.length; i++){
+				regStmt = conn.prepareStatement("INSERT INTO User_Ingredients(ingredient_id, quantity, units, user_id) VALUES (?,?,?,(SELECT user_id FROM users WHERE username=?))");
+				regStmt.setString(1, ingredients[i]);
+				regStmt.setString(2, ingredientsQuantities[i]);
+				regStmt.setString(3, ingredientsQUnits[i]);
+				regStmt.setString(4, username);
+				regStmt.executeUpdate();
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (regStmt != null) {
+				try {
+					regStmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(result != null){
+				try{
+					result.close();
+				}catch (SQLException e){
+					e.printStackTrace();
+				}
+			}
+		}
+		return rowsaffected;
 	}
 	
 	public static int addRecipe(String username, String name, String description, String prepTime, String cookTime, String[] steps, String[] ingredients, String[] ingredientsQuantities, String[] ingredientsQUnits){
