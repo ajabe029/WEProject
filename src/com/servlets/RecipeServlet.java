@@ -37,16 +37,19 @@ public class RecipeServlet extends HttpServlet {
 		String[] ingredientsQuantities = request.getParameterValues("ingredientQuantities");
 		String[] ingredientsQUnits = request.getParameterValues("ingredientsQUnits");
 		String[] steps = request.getParameterValues("steps");
+		
+		RecipesDAO recipesDao = new RecipesDAO();
+		List<Recipes> recipes = null;
 
-		if(DBFront.addRecipe(username, recName, recDescription, recCookTime, recPrepTime, steps, ingredients, ingredientsQuantities, ingredientsQUnits) > 0){  
+		if(DBFront.addRecipe(username, recName, recDescription, recCookTime, recPrepTime, steps, ingredients, ingredientsQuantities, ingredientsQUnits) > 0){
+			request.setAttribute("recipes", recipes);
 			request.setAttribute("recipeSuccessMessage", "Recipe added successfully");
-			RequestDispatcher rd=request.getRequestDispatcher("myrecipes.jsp");  
-			rd.forward(request,response);  
+			response.sendRedirect("myrecipes");
 		}  
 		else{  
-			request.setAttribute("recipeErrorMessage", "Error adding recipe");  
-			RequestDispatcher rd=request.getRequestDispatcher("myrecipes.jsp");  
-			rd.forward(request,response);  
+			request.setAttribute("recipeErrorMessage", "Error adding recipe");
+			request.setAttribute("recipes", recipes);
+			response.sendRedirect("myrecipes");
 		}  
 
 		out.close();  
