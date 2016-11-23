@@ -38,7 +38,6 @@ public class RecipesDAO {
             	recipe.setDescription(rs.getString("description"));
             	recipe.setPreptime(rs.getInt("preptime"));
             	recipe.setCooktime(rs.getInt("cooktime"));
-            	recipe.setInstructions(rs.getString("instructions"));
             	recipe.setDatecreated(rs.getDate("datecreated"));
             	recipe.setDateupdated(rs.getDate("dateupdated"));
             	recipes.add(recipe);
@@ -72,7 +71,6 @@ public class RecipesDAO {
             	recipe.setDescription(rs.getString("description"));
             	recipe.setPreptime(rs.getInt("preptime"));
             	recipe.setCooktime(rs.getInt("cooktime"));
-            	recipe.setInstructions(rs.getString("instructions"));
             	recipe.setDatecreated(rs.getDate("datecreated"));
             	recipe.setDateupdated(rs.getDate("dateupdated"));
             	recipes.add(recipe);
@@ -111,7 +109,6 @@ public class RecipesDAO {
             	temp.setDescription(rs.getString("description"));
             	temp.setPreptime(rs.getInt("preptime"));
             	temp.setCooktime(rs.getInt("cooktime"));
-            	temp.setInstructions(rs.getString("instructions"));
             	temp.setDatecreated(rs.getDate("datecreated"));
             	temp.setDateupdated(rs.getDate("dateupdated"));
             	recipe.add(temp);

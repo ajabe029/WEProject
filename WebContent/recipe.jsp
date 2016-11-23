@@ -11,7 +11,6 @@
             <th>Description</th>
             <th>Preparation Time</th>
             <th>Cooking Time</th>
-            <th>Instructions</th>
             <th>Date Submitted</th>
             <th>Date Updated</th>
         </tr>
@@ -24,7 +23,6 @@
             	<td>${recipe.description}</td>
             	<td>${recipe.preptime}</td>
             	<td>${recipe.cooktime}</td>
-            	<td>${recipe.instructions}</td>
             	<td>${recipe.datecreated}</td>
             	<td>${recipe.dateupdated}</td>
             </tr>

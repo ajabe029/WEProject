@@ -9,7 +9,6 @@ public class Recipes {
 	private String description;
 	private int preptime;
 	private int cooktime;
-	private String instructions;
 	private Date datecreated;
 	private Date dateupdated;
 	
@@ -51,14 +50,6 @@ public class Recipes {
 	
 	public void setCooktime(int cooktime) {
 		this.cooktime = cooktime;
-	}
-	
-	public String getInstructions() {
-		return instructions;
-	}
-	
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
 	}
 	
 	public Date getDatecreated() {
