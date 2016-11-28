@@ -6,8 +6,13 @@
 <%
 RecipesDAO recipesDao = new RecipesDAO();
 List<Recipes> recipeList = new ArrayList<Recipes>();
-int userId = (int)session.getAttribute("user_id");
-recipeList = recipesDao.getRecipes(userId);
+if(session.getAttribute("user_id")!=null){
+	int userId = (int)session.getAttribute("user_id");
+	recipeList = recipesDao.getRecipes(userId);
+} else {
+	recipeList = recipesDao.getRecipes(0);
+}
+
 %>
 
 <script type="text/javascript">

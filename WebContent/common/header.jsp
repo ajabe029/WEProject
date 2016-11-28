@@ -33,13 +33,16 @@
 	<%@page import="java.util.Locale"%>
   	
   	<%
-  		session.setAttribute("language", "EN");
-  		Locale currentLocale = new Locale("EN", "CA");
-		ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+  	Locale currentLocale;
+  	ResourceBundle messages;
   	if(session!= null && session.getAttribute("language") != null){
   		String language = session.getAttribute("language").toString();
 		String country = "CA";
 		currentLocale = new Locale(language, country);
+		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+  	} else {
+  		session.setAttribute("language", "EN");
+  		currentLocale = new Locale("EN", "CA");
 		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
   	}
   	
