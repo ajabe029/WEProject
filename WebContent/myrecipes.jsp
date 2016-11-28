@@ -50,7 +50,7 @@
 	  </c:otherwise>
 	</c:choose>
 	<div class="row col-xs-12 text-center">
-		<a href="addrecipe.jsp" class="btn btn-info" role="button"><%=messages.getString("add")%> <%=messages.getString("recipe")%></a>
+		<a href="addrecipe.jsp" class="btn btn-info" role="button"><%=messages.getString("add")%> <%=messages.getString("new")%> <%=messages.getString("recipe")%></a>
 		<a href="#" class="btn btn-info" role="button" disabled="disabled"><%=messages.getString("delete")%> <%=messages.getString("recipe")%></a>
 	</div>
 </div>

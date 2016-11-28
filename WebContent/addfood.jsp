@@ -30,48 +30,49 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	    var max_fields      = 20; //maximum input boxes allowed
-	    var wrapper         = $(".ingredient-wrapper"); //Fields wrapper
-	    var add_button      = $(".add_field_button"); //Add button ID
-	    
-	    var x = 1; //initlal text box count
-	    $(".add_field_button").on("click", function(e){ //on add input button click
-	        e.preventDefault();
-	        if(x < max_fields){ //max input box allowed
-	            x++; //text box increment
-	            $(".ingredient-wrapper").append("<div class=\"row\"><div class=\"col-xs-3\">" +
-	            		"<h5>Ingredient "+ x + "</h5><select style=\"display:block;\" name=\"ingredients\">"
-	            		<%for(String ingredient : ingredients){
-						out.print("+ \"<option value=\\\"" + count + "\\\">" + ingredient + "</option>\" \n");
-						count++;
-						}count=1;%>
-	            		
-	            		+ "</select></div><div class=\"col-xs-4\" style=\"padding-right: 0px\"><table>"
-	            		+ "<tr><td><div class=\"update-field\"><h5>Quantity</h5>"
-						+ "<input type=\"number\" name=\"ingredientQuantities\" required=\"required\" autocomplete=\"off\"/></div></td>"
-						+	"<td style=\"padding-bottom: 0px;\"><select style=\"display:block;margin-top:30px;\" name=\"ingredientsQUnits\">"
-						+		"<option value=\"teaspoon\">Teaspoon</option>"
-						+		"<option value=\"tablespoon\">Tablespoon</option>"
-						+		"<option value=\"oz\">Ounce</option>"
-						+		"<option value=\"1/2cup\">1/2 Cup</option>"
-						+		"<option value=\"cup\">Cup</option>"
-						+		"<option value=\"pint\">Pint</option>"
-						+		"<option value=\"gallon\">Gallon</option>"
-						+		"<option value=\"quart\">Quart</option>"
-						+		"<option value=\"ml\">Millilitre</option>"
-						+		"<option value=\"l\">Litre</option>"
-						+		"<option value=\"dl\">Decilitre</option>"
-						+		"<option value=\"lb\">Pound</option>"
-						+		"<option value=\"mg\">Milligram</option>"
-						+		"<option value=\"g\">Gram</option>"
-						+		"<option value=\"kg\">Kilogram</option>"
-						+	"</select></td><td><a href=\"#\" style=\"display:block;margin-left:10px;margin-top:30px;\"class=\"remove_field\">Remove</a></td></tr></table></div></div>"); //add input box
-	        }
-	    });
-	    
-	    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-	        e.preventDefault(); $(this).parent('td').parent('tr').parent('tbody').parent('table').parent('div').parent('div').remove(); x--;
-	    });
+    var max_fields      = 20; //maximum input boxes allowed
+    var wrapper         = $(".ingredient-wrapper"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+    
+    var x = 1; //initlal text box count
+    $(".add_field_button").on("click", function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(".ingredient-wrapper").append("<div class=\"row\"><div class=\"col-xs-3\">" +
+            		"<h5>Ingredient "+ x + "</h5><select style=\"display:block;\" name=\"ingredients\">"
+            		<%for(String ingredient : ingredients){
+					out.print("+ \"<option value=\\\"" + count + "\\\">" + ingredient + "</option>\" \n");
+					count++;
+					}count=1;%>
+            		
+            		+ "</select></div><div class=\"col-xs-4\" style=\"padding-right: 0px\"><table>"
+            		+ "<tr><td><div class=\"update-field\"><h5>Quantity</h5>"
+					+ "<input type=\"number\" name=\"ingredientQuantities\" required=\"required\" autocomplete=\"off\"/></div></td>"
+					+	"<td style=\"padding-bottom: 0px;\"><select style=\"display:block;margin-top:30px;\" name=\"ingredientsQUnits\">"
+					+		"<option value=\"tsp(s)\">Teaspoon(s)</option>"
+					+		"<option value=\"tbsp(s)\">Tablespoon(s)</option>"
+					+		"<option value=\"oz(s)\">Ounce(s)</option>"
+					+		"<option value=\"1/2 cup(s)\">1/2 Cup(s)</option>"
+					+		"<option value=\"cup(s)\">Cup(s)</option>"
+					+		"<option value=\"pint(s)\">Pint(s)</option>"
+					+		"<option value=\"gallon(s)\">Gallon(s)</option>"
+					+		"<option value=\"quart(s)\">Quart(s)</option>"
+					+		"<option value=\"mL(s)\">Millilitre(s)</option>"
+					+		"<option value=\"L(s)\">Litre(s)</option>"
+					+		"<option value=\"dL(s)\">Decilitre(s)</option>"
+					+		"<option value=\"lb(s)\">Pound(s)</option>"
+					+		"<option value=\"mg(s)\">Milligram(s)</option>"
+					+		"<option value=\"g(s)\">Gram(s)</option>"
+					+		"<option value=\"kg(s)\">Kilogram(s)</option>"
+					+		"<option value=\"pc(s)\">Piece(s)</option>"
+					+	"</select></td><td><a href=\"#\" style=\"display:block;margin-left:10px;margin-top:30px;\"class=\"remove_field\">Remove</a></td></tr></table></div></div>"); //add input box
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('td').parent('tr').parent('tbody').parent('table').parent('div').parent('div').remove(); x--;
+    });
 });
 </script>
 
@@ -108,21 +109,22 @@ $(document).ready(function(){
 												</td>
 												<td style="padding-bottom: 0px;">
 													<select style="display:block;margin-top:30px;" name="ingredientsQUnits">
-														<option value="teaspoon">Teaspoon</option>
-														<option value="tablespoon">Tablespoon</option>
-														<option value="oz">Ounce</option>
-														<option value="1/2cup">1/2 Cup</option>
-														<option value="cup">Cup</option>
-														<option value="pint">Pint</option>
-														<option value="gallon">Gallon</option>
-														<option value="quart">Quart</option>
-														<option value="ml">Millilitre</option>
-														<option value="l">Litre</option>
-														<option value="dl">Decilitre</option>
-														<option value="lb">Pound</option>
-														<option value="mg">Milligram</option>
-														<option value="g">Gram</option>
-														<option value="kg">Kilogram</option>
+														<option value="tsp(s)">Teaspoon(s)</option>
+														<option value="tbsp(s)">Tablespoon(s)</option>
+														<option value="oz(s)">Ounce(s)</option>
+														<option value="1/2 cup(s)">1/2 Cup(s)</option>
+														<option value="cup(s)">Cup(s)</option>
+														<option value="pint(s)">Pint(s)</option>
+														<option value="gallon(s)">Gallon(s)</option>
+														<option value="quart(s)">Quart(s)</option>
+														<option value="mL(s)">Millilitre(s)</option>
+														<option value="L(s)">Litre(s)</option>
+														<option value="dL(s)">Decilitre(s)</option>
+														<option value="lb(s)">Pound(s)</option>
+														<option value="mg(s)">Milligram(s)</option>
+														<option value="g(s)">Gram(s)</option>
+														<option value="kg(s)">Kilogram(s)</option>
+														<option value="pc(s)">Piece(s)</option>
 													</select>
 												</td>
 											</tr>
