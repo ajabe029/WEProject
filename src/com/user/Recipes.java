@@ -7,8 +7,8 @@ public class Recipes {
 	private int recipeID;
 	private String name;
 	private String description;
-	private int preptime;
-	private int cooktime;
+	private String preptime;
+	private String cooktime;
 	private Date datecreated;
 	private Date dateupdated;
 	
@@ -36,19 +36,19 @@ public class Recipes {
 		this.description = description;
 	}
 	
-	public int getPreptime() {
+	public String getPreptime() {
 		return preptime;
 	}
 	
-	public void setPreptime(int preptime) {
+	public void setPreptime(String preptime) {
 		this.preptime = preptime;
 	}
 	
-	public int getCooktime() {
+	public String getCooktime() {
 		return cooktime;
 	}
 	
-	public void setCooktime(int cooktime) {
+	public void setCooktime(String cooktime) {
 		this.cooktime = cooktime;
 	}
 	

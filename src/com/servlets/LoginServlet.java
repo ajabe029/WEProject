@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet{
 		String username = request.getParameter("loginUsername");  
 		String password = request.getParameter("loginPassword");
 		int userType = DBFront.getUserType(username, password);
+		int userId = DBFront.getUserId(username);
 
 		HttpSession session = request.getSession(false);
 		
@@ -32,6 +33,7 @@ public class LoginServlet extends HttpServlet{
 			if(session!=null)
 			session.setAttribute("username", username);
 			session.setAttribute("language", "EN");
+			session.setAttribute("user_id", userId);
 			if(userType == CommonConstants.ADMIN){
 				response.sendRedirect("welcome-admin");
 			}else{

@@ -38,7 +38,6 @@ public class RecipeServlet extends HttpServlet {
 		String[] ingredientsQUnits = request.getParameterValues("ingredientsQUnits");
 		String[] steps = request.getParameterValues("steps");
 		
-		RecipesDAO recipesDao = new RecipesDAO();
 		List<Recipes> recipes = null;
 
 		if(DBFront.addRecipe(username, recName, recDescription, recCookTime, recPrepTime, steps, ingredients, ingredientsQuantities, ingredientsQUnits) > 0){
@@ -57,11 +56,15 @@ public class RecipeServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession(false);
+		int userId = (int) session.getAttribute("user_id");
+		
 		RecipesDAO recipesDao = new RecipesDAO();
 		List<Recipes> recipes = null;
 		
 		try{
-			recipes = recipesDao.getRecipes();
+			recipes = recipesDao.getRecipes(userId);
 		} catch (SQLException e){
 			e.printStackTrace();
 		}

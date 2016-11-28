@@ -31,4 +31,32 @@
 </table>    
 </div>
 
+<section class="container-fluid">
+
+<div class="row">
+	<div class="col-xs-6">
+		<p>Prep. Time: <strong><c:out value="${recipeDetails[0].preptime}"/></strong></p>
+		<p>Cook Time: <strong><c:out value="${recipeDetails[0].cooktime}"/></strong></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-6">
+		<ul class="bullets">
+		<c:forEach items="${recipeIngredients}" var="ingredients">
+			<li>${ingredients.ingredientName} ${ingredients.amountRequired} ${ingredients.units}</li>
+		</c:forEach>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-6">
+	<c:forEach items="${recipeSteps}" var="steps" varStatus="loop">
+		${loop.count}. ${steps.steptext} <br>
+	</c:forEach>
+	</div>
+</div>
+</section>
+
 <%@include file="common/footer.jsp"%>

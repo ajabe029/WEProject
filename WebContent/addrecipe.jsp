@@ -52,21 +52,22 @@ $(document).ready(function(){
 	            		+ "<tr><td><div class=\"update-field\"><h5>Quantity</h5>"
 						+ "<input type=\"number\" name=\"ingredientQuantities\" required=\"required\" autocomplete=\"off\"/></div></td>"
 						+	"<td style=\"padding-bottom: 0px;\"><select style=\"display:block;margin-top:30px;\" name=\"ingredientsQUnits\">"
-						+		"<option value=\"teaspoon\">Teaspoon</option>"
-						+		"<option value=\"tablespoon\">Tablespoon</option>"
-						+		"<option value=\"oz\">Ounce</option>"
-						+		"<option value=\"1/2cup\">1/2 Cup</option>"
-						+		"<option value=\"cup\">Cup</option>"
-						+		"<option value=\"pint\">Pint</option>"
-						+		"<option value=\"gallon\">Gallon</option>"
-						+		"<option value=\"quart\">Quart</option>"
-						+		"<option value=\"ml\">Millilitre</option>"
-						+		"<option value=\"l\">Litre</option>"
-						+		"<option value=\"dl\">Decilitre</option>"
-						+		"<option value=\"lb\">Pound</option>"
-						+		"<option value=\"mg\">Milligram</option>"
-						+		"<option value=\"g\">Gram</option>"
-						+		"<option value=\"kg\">Kilogram</option>"
+						+		"<option value=\"tsp(s)\">Teaspoon(s)</option>"
+						+		"<option value=\"tbsp(s)\">Tablespoon(s)</option>"
+						+		"<option value=\"oz(s)\">Ounce(s)</option>"
+						+		"<option value=\"1/2 cup(s)\">1/2 Cup(s)</option>"
+						+		"<option value=\"cup(s)\">Cup(s)</option>"
+						+		"<option value=\"pint(s)\">Pint(s)</option>"
+						+		"<option value=\"gallon(s)\">Gallon(s)</option>"
+						+		"<option value=\"quart(s)\">Quart(s)</option>"
+						+		"<option value=\"mL(s)\">Millilitre(s)</option>"
+						+		"<option value=\"L(s)\">Litre(s)</option>"
+						+		"<option value=\"dL(s)\">Decilitre(s)</option>"
+						+		"<option value=\"lb(s)\">Pound(s)</option>"
+						+		"<option value=\"mg(s)\">Milligram(s)</option>"
+						+		"<option value=\"g(s)\">Gram(s)</option>"
+						+		"<option value=\"kg(s)\">Kilogram(s)</option>"
+						+		"<option value=\"pc(s)\">Piece(s)</option>"
 						+	"</select></td><td><a href=\"#\" style=\"display:block;margin-left:10px;margin-top:30px;\"class=\"remove_field\">Remove</a></td></tr></table></div></div>"); //add input box
 	        }
 	    });
@@ -137,21 +138,22 @@ $(document).ready(function(){
 												</td>
 												<td style="padding-bottom: 0px;">
 													<select style="display:block;margin-top:30px;" name="ingredientsQUnits">
-														<option value="teaspoon">Teaspoon</option>
-														<option value="tablespoon">Tablespoon</option>
-														<option value="oz">Ounce</option>
-														<option value="1/2cup">1/2 Cup</option>
-														<option value="cup">Cup</option>
-														<option value="pint">Pint</option>
-														<option value="gallon">Gallon</option>
-														<option value="quart">Quart</option>
-														<option value="ml">Millilitre</option>
-														<option value="l">Litre</option>
-														<option value="dl">Decilitre</option>
-														<option value="lb">Pound</option>
-														<option value="mg">Milligram</option>
-														<option value="g">Gram</option>
-														<option value="kg">Kilogram</option>
+														<option value="tsp(s)">Teaspoon(s)</option>
+														<option value="tbsp(s)">Tablespoon(s)</option>
+														<option value="oz(s)">Ounce(s)</option>
+														<option value="1/2 cup(s)">1/2 Cup(s)</option>
+														<option value="cup(s)">Cup(s)</option>
+														<option value="pint(s)">Pint(s)</option>
+														<option value="gallon(s)">Gallon(s)</option>
+														<option value="quart(s)">Quart(s)</option>
+														<option value="mL(s)">Millilitre(s)</option>
+														<option value="L(s)">Litre(s)</option>
+														<option value="dL(s)">Decilitre(s)</option>
+														<option value="lb(s)">Pound(s)</option>
+														<option value="mg(s)">Milligram(s)</option>
+														<option value="g(s)">Gram(s)</option>
+														<option value="kg(s)">Kilogram(s)</option>
+														<option value="pc(s)">Piece(s)</option>
 													</select>
 												</td>
 											</tr>

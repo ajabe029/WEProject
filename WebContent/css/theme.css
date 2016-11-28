@@ -200,3 +200,18 @@ body {
 .color-change {
 	background-color: #e4e4e7;
 }
+
+.bullets li {
+    display: block;
+}
+
+.bullets li:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #000000;
+}

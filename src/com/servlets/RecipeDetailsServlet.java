@@ -20,18 +20,26 @@ public class RecipeDetailsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		RecipesDAO recipesDao = new RecipesDAO();
 		List<Recipes> recipe = null;
+		List<Steps> steps = null;
+		List<Ingredients> ingredients = null;
 		int recipeId = Integer.parseInt(request.getParameter("recipe_id"));
 		//System.out.println(recipeId);
 		
 		try{
 			recipe = recipesDao.getRecipe(recipeId);
+			steps = recipesDao.getRecipeSteps(recipeId);
+			ingredients = recipesDao.getRecipeIngredients(recipeId);
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
 		
 		request.setAttribute("recipeDetails", recipe);
+		request.setAttribute("recipeSteps", steps);
+		request.setAttribute("recipeIngredients", ingredients);
+		
 		request.getRequestDispatcher("recipe.jsp").forward(request, response);
 	}
 

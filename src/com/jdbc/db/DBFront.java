@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.user.*;
 
@@ -444,6 +446,52 @@ public class DBFront {
 			}
 		}
 		return userType;
+	}
+
+	public static int getUserId(String username) {
+		
+		PreparedStatement query = null;
+		Connection connection = ConnectionFactory.getConnection();
+        String queryString = ("SELECT user_id FROM users where username = ?");
+        int userId = -1;
+        ResultSet rs = null;
+        
+        try {
+            connection = ConnectionFactory.getConnection();
+            query = connection.prepareStatement(queryString);
+            query.setString(1, username);
+            System.out.println(queryString);
+            rs = query.executeQuery();
+            
+            while(rs.next()){
+            	userId = rs.getInt(1);
+            }
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (query != null) {
+				try {
+					query.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+        return userId;
 	}
 
 }
