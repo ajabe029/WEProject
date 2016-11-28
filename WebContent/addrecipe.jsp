@@ -9,7 +9,7 @@
 <%
 			int count = 1;
 			String jspPath = session.getServletContext().getRealPath("/");
-			String txtFilePath = jspPath + "/text/ingredientslist.txt";
+			String txtFilePath = jspPath + "/text/" + messages.getString("ingredientsfile");
             BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
             //BufferedReader br = new InputStreamReader(new FileInputStream(txtFilePath));
             StringBuilder sb = new StringBuilder();
@@ -42,33 +42,33 @@ $(document).ready(function(){
 	        if(x < max_fields){ //max input box allowed
 	            x++; //text box increment
 	            $(".ingredient-wrapper").append("<div class=\"row\"><div class=\"col-xs-3\">" +
-	            		"<h5>Ingredient "+ x + "</h5><select style=\"display:block;\" name=\"ingredients\">"
+	            		"<h5><%=messages.getString("ingredient")%> "+ x + "</h5><select style=\"display:block;width:90%;\" name=\"ingredients\">"
 	            		<%for(String ingredient : ingredients){
 						out.print("+ \"<option value=\\\"" + count + "\\\">" + ingredient + "</option>\" \n");
 						count++;
 						}count=1;%>
 	            		
 	            		+ "</select></div><div class=\"col-xs-4\" style=\"padding-right: 0px\"><table>"
-	            		+ "<tr><td><div class=\"update-field\"><h5>Quantity</h5>"
+	            		+ "<tr><td><div class=\"update-field\"><h5><%=messages.getString("quantity")%></h5>"
 						+ "<input type=\"number\" name=\"ingredientQuantities\" required=\"required\" autocomplete=\"off\"/></div></td>"
 						+	"<td style=\"padding-bottom: 0px;\"><select style=\"display:block;margin-top:30px;\" name=\"ingredientsQUnits\">"
-						+		"<option value=\"tsp(s)\">Teaspoon(s)</option>"
-						+		"<option value=\"tbsp(s)\">Tablespoon(s)</option>"
-						+		"<option value=\"oz(s)\">Ounce(s)</option>"
-						+		"<option value=\"1/2 cup(s)\">1/2 Cup(s)</option>"
-						+		"<option value=\"cup(s)\">Cup(s)</option>"
-						+		"<option value=\"pint(s)\">Pint(s)</option>"
-						+		"<option value=\"gallon(s)\">Gallon(s)</option>"
-						+		"<option value=\"quart(s)\">Quart(s)</option>"
-						+		"<option value=\"mL(s)\">Millilitre(s)</option>"
-						+		"<option value=\"L(s)\">Litre(s)</option>"
-						+		"<option value=\"dL(s)\">Decilitre(s)</option>"
-						+		"<option value=\"lb(s)\">Pound(s)</option>"
-						+		"<option value=\"mg(s)\">Milligram(s)</option>"
-						+		"<option value=\"g(s)\">Gram(s)</option>"
-						+		"<option value=\"kg(s)\">Kilogram(s)</option>"
-						+		"<option value=\"pc(s)\">Piece(s)</option>"
-						+	"</select></td><td><a href=\"#\" style=\"display:block;margin-left:10px;margin-top:30px;\"class=\"remove_field\">Remove</a></td></tr></table></div></div>"); //add input box
+						+    "<option value=\"tsp(s)\"><%=messages.getString("teaspoon") %>(s)</option>"
+						+	 "<option value=\"tbsp(s)\"><%=messages.getString("tablespoon") %>(s)</option>"
+						+	 "<option value=\"oz(s)\"><%=messages.getString("ounce") %>(s)</option>"
+						+	 "<option value=\"1/2 cup(s)\">1/2 <%=messages.getString("cup") %>(s)</option>"
+						+	 "<option value=\"cup(s)\"><%=messages.getString("cup") %>(s)</option>"
+						+	 "<option value=\"pint(s)\"><%=messages.getString("pint") %>(s)</option>"
+						+	 "<option value=\"gallon(s)\"><%=messages.getString("gallon") %>(s)</option>"
+						+	 "<option value=\"quart(s)\"><%=messages.getString("quart") %>(s)</option>"
+						+	 "<option value=\"mL(s)\"><%=messages.getString("millilitre") %>(s)</option>"
+						+	 "<option value=\"L(s)\"><%=messages.getString("litre") %>(s)</option>"
+						+	 "<option value=\"dL(s)\"><%=messages.getString("decilitre") %>(s)</option>"
+						+	 "<option value=\"lb(s)\"><%=messages.getString("pound") %>(s)</option>"
+						+	 "<option value=\"mg(s)\"><%=messages.getString("milligram") %>(s)</option>"
+						+	 "<option value=\"g(s)\"><%=messages.getString("gram") %>(s)</option>"
+						+	 "<option value=\"kg(s)\"><%=messages.getString("kilogram") %>(s)</option>"
+						+	 "<option value=\"pc(s)\"><%=messages.getString("piece") %>(s)</option>"
+						+	"</select></td><td><a href=\"#\" style=\"display:block;margin-left:10px;margin-top:30px;\"class=\"remove_field\"><%=messages.getString("remove")%></a></td></tr></table></div></div>"); //add input box
 	        }
 	    });
 	    
@@ -79,47 +79,47 @@ $(document).ready(function(){
 </script>
 
 <div class="container-fluid">
-	 <h1 class="bg-primary text-center">Recipes</h1>
+	 <h1 class="bg-primary text-center"><%=messages.getString("recipes")%></h1>
       	<div class="row">
    			<div class="col-xs-12">
                		<div class="panel color-change">
 	                   <div class="panel-body">
 	                   <form action="myrecipes" method="post">
 	                   		<div class="update-field">
-								<label for="recName">Name<span class="req">*</span></label>
+								<label for="recName"><%=messages.getString("name")%><span class="req">*</span></label>
 							 	<input type="text" name="recName" required="required" autocomplete="off"/>
 							</div>
 							<div class="update-field">
-								<label for="recDescription">Description</label>
+								<label for="recDescription"><%=messages.getString("description") %></label>
 								<input type="text" name="recDescription" autocomplete="off"/>
 							</div>
 							<div class="row">
 								<div class="col-xs-2">
 									<div class="update-field">
-										<label for="recPreptime">Preparation Time<span class="req">*</span></label>
+										<label for="recPreptime"><%=messages.getString("preparationtime") %><span class="req">*</span></label>
 										<input type="text" name="recPreptime" required="required" autocomplete="off"/>
 									</div>
 								</div>
 								<div class="col-xs-2">
 									<div class="update-field">
-										<label for="recCooktime">Cook Time<span class="req">*</span></label>
+										<label for="recCooktime"><%=messages.getString("cooktime") %><span class="req">*</span></label>
 										<input type="text" name="recCooktime" required="required" autocomplete="off"/>
 									</div>
 								</div>
 							</div>
 							<div class="step-wrapper" style="margin-bottom: 20px;">
 								<div class="update-field">
-									<label for="steps">Step 1<span class="req">*</span></label>
+									<label for="steps"><%=messages.getString("step") %> 1<span class="req">*</span></label>
 									<input type="text" name="steps" required="required" autocomplete="off" />
 								</div>
 							</div>
-							<button class="add_step_button">Add another step</button>
+							<button class="add_step_button"><%=messages.getString("addanotherstep") %></button>
 							<div class="ingredient-wrapper" style="margin-bottom: 50px">
-							<h3>Ingredients</h3>
+							<h3><%=messages.getString("ingredients") %></h3>
 							<div class="row">
 									<div class="col-xs-3">
-									<h5>Ingredient 1</h5>
-										<select style="display:block;" name="ingredients">
+									<h5><%=messages.getString("ingredient") %>1</h5>
+										<select style="display:block; width:90%;" name="ingredients">
 											<%for(String ingredient : ingredients){%>
 											<option value="<%=count %>"><%=ingredient%></option>
 											<%
@@ -132,28 +132,28 @@ $(document).ready(function(){
 											<tr>
 												<td>
 													<div class="update-field">	
-														<h5>Quantity</h5>
+														<h5><%=messages.getString("quantity") %></h5>
 														<input type="number" name="ingredientQuantities" required="required" autocomplete="off"/>
 													</div>
 												</td>
 												<td style="padding-bottom: 0px;">
 													<select style="display:block;margin-top:30px;" name="ingredientsQUnits">
-														<option value="tsp(s)">Teaspoon(s)</option>
-														<option value="tbsp(s)">Tablespoon(s)</option>
-														<option value="oz(s)">Ounce(s)</option>
-														<option value="1/2 cup(s)">1/2 Cup(s)</option>
-														<option value="cup(s)">Cup(s)</option>
-														<option value="pint(s)">Pint(s)</option>
-														<option value="gallon(s)">Gallon(s)</option>
-														<option value="quart(s)">Quart(s)</option>
-														<option value="mL(s)">Millilitre(s)</option>
-														<option value="L(s)">Litre(s)</option>
-														<option value="dL(s)">Decilitre(s)</option>
-														<option value="lb(s)">Pound(s)</option>
-														<option value="mg(s)">Milligram(s)</option>
-														<option value="g(s)">Gram(s)</option>
-														<option value="kg(s)">Kilogram(s)</option>
-														<option value="pc(s)">Piece(s)</option>
+														<option value="tsp(s)"><%=messages.getString("teaspoon") %>(s)</option>
+														<option value="tbsp(s)"><%=messages.getString("tablespoon") %>(s)</option>
+														<option value="oz(s)"><%=messages.getString("ounce") %>(s)</option>
+														<option value="1/2 cup(s)">1/2 <%=messages.getString("cup") %>(s)</option>
+														<option value="cup(s)"><%=messages.getString("cup") %>(s)</option>
+														<option value="pint(s)"><%=messages.getString("pint") %>(s)</option>
+														<option value="gallon(s)"><%=messages.getString("gallon") %>(s)</option>
+														<option value="quart(s)"><%=messages.getString("quart") %>(s)</option>
+														<option value="mL(s)"><%=messages.getString("millilitre") %>(s)</option>
+														<option value="L(s)"><%=messages.getString("litre") %>(s)</option>
+														<option value="dL(s)"><%=messages.getString("decilitre") %>(s)</option>
+														<option value="lb(s)"><%=messages.getString("pound") %>(s)</option>
+														<option value="mg(s)"><%=messages.getString("milligram") %>(s)</option>
+														<option value="g(s)"><%=messages.getString("gram") %>(s)</option>
+														<option value="kg(s)"><%=messages.getString("kilogram") %>(s)</option>
+														<option value="pc(s)"><%=messages.getString("piece") %>(s)</option>
 													</select>
 												</td>
 											</tr>
@@ -161,8 +161,8 @@ $(document).ready(function(){
 									</div>
 							</div>
 							</div>
-							<button class="add_field_button">Add another ingredient</button>
-	                   		<button type="submit" value="cancel">Submit</button>
+							<button class="add_field_button"><%=messages.getString("addanotheringredient") %></button>
+	                   		<button type="submit" value="cancel"><%=messages.getString("submit") %></button>
 	                   </form>
 	                   </div>
 	               </div>
