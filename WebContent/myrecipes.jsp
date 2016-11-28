@@ -31,7 +31,10 @@
 			      					<div class="panel panel-success">
 										<div class="panel-heading">Description:</div>
 										<div class="panel-body">
-			      							${recipe.description}
+										<c:if test="${empty recipe.description}">
+			      							<%=messages.getString("noDescription")%>
+			      						</c:if>
+			      							${recipe.description}	
 			      						</div>
 			      					</div>		
 			      					</div>
