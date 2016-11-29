@@ -2,11 +2,12 @@
 <%@include file="common/navbar.jsp"%>
 
 <div class="container-fluid">
-<h1 class="text-center bg-primary"> <%=messages.getString("reportanissue") %></h1>
+<div class="box">
+<h1 class="h2"> <%=messages.getString("reportanissue") %></h1>
 <hr />
 	<div class="row">
 		<div class="col-xs-5">
-			<div class="panel color-change">
+			<div class="panel color-change-recipe">
 				<div class="panel-body">
 					<% if(request.getAttribute("bugErrorMessage")!=null){ %>
 						    <div class="alert alert-danger">
@@ -36,13 +37,14 @@
 							<textarea id="bugDescription" style="margin-bottom: 10px;" cols="25" placeholder="<%=messages.getString("enteradescription") %>..." name="bugDescription" maxlength="250"></textarea>
 						</div>
 						<div class="col-xs-4">
-							<button type="submit" class="button button-block" value="cancel"><%=messages.getString("submit") %></button>
+							<button type="submit" class="btn btn-primary" value="submit"><%=messages.getString("submit") %></button>
 						</div>
 						<p id="characters" style="float: right;"><%=messages.getString("charactersleft") %>: 250 </p>
 					</form>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </div>
 

@@ -40,7 +40,7 @@ $(document).ready(function(){
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
             $(".ingredient-wrapper").append("<div class=\"row\"><div class=\"col-xs-3\">" +
-            		"<h5>Ingredient "+ x + "</h5><select style=\"display:block;\" name=\"ingredients\">"
+            		"<h5>Ingredient "+ x + "</h5><select style=\"display:block; width:90%;\" name=\"ingredients\">"
             		<%for(String ingredient : ingredients){
 					out.print("+ \"<option value=\\\"" + count + "\\\">" + ingredient + "</option>\" \n");
 					count++;
@@ -49,7 +49,7 @@ $(document).ready(function(){
             		+ "</select></div><div class=\"col-xs-4\" style=\"padding-right: 0px\"><table>"
             		+ "<tr><td><div class=\"update-field\"><h5>Quantity</h5>"
 					+ "<input type=\"number\" name=\"ingredientQuantities\" required=\"required\" autocomplete=\"off\"/></div></td>"
-					+	"<td style=\"padding-bottom: 0px;\"><select style=\"display:block;margin-top:30px;\" name=\"ingredientsQUnits\">"
+					+	"<td style=\"padding-bottom: 0px;\"><select style=\"display:block;margin-top:30px; \" name=\"ingredientsQUnits\">"
 					+		"<option value=\"tsp(s)\">Teaspoon(s)</option>"
 					+		"<option value=\"tbsp(s)\">Tablespoon(s)</option>"
 					+		"<option value=\"oz(s)\">Ounce(s)</option>"
@@ -77,9 +77,10 @@ $(document).ready(function(){
 </script>
 
 <div class="container-fluid">
+<div class="box">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="panel">
+			<div class="panel color-change-recipe">
 				<div class="panel-heading">
 					<h2> Add Food </h2>
 				</div>
@@ -90,7 +91,7 @@ $(document).ready(function(){
 							<div class="row">
 									<div class="col-xs-3">
 									<h5>Ingredient 1</h5>
-										<select style="display:block;" name="ingredients">
+										<select style="display:block; width:90%;" name="ingredients">
 											<%for(String ingredient : ingredients){%>
 											<option value="<%=count %>"><%=ingredient%></option>
 											<%
@@ -132,12 +133,13 @@ $(document).ready(function(){
 									</div>
 							</div>
 							</div>
-							<button class="add_field_button">Add another ingredient</button>
-	                   		<button type="submit" value="cancel">Submit</button>
+							<button class="btn btn-primary add_field_button">Add another ingredient</button>
+	                   		<button class="btn btn-primary" type="submit" value="cancel">Submit</button>
 	                   </form>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </div>
 

@@ -79,10 +79,11 @@ $(document).ready(function(){
 </script>
 
 <div class="container-fluid">
-	 <h1 class="bg-primary text-center"><%=messages.getString("recipes")%></h1>
+<div class="box">
+	 <h1 class="text-center"><%=messages.getString("recipes")%></h1>
       	<div class="row">
    			<div class="col-xs-12">
-               		<div class="panel color-change">
+               		<div class="panel color-change-recipe">
 	                   <div class="panel-body">
 	                   <form action="myrecipes" method="post">
 	                   		<div class="update-field">
@@ -91,7 +92,7 @@ $(document).ready(function(){
 							</div>
 							<div class="update-field">
 								<label for="recDescription"><%=messages.getString("description") %></label>
-								<textarea name="recDescription" style="width:70%;line-height:30px;font-size:14px;padding:2px 5px;"></textarea>
+								<textarea name="recDescription"></textarea>
 							</div>
 							<div class="row">
 								<div class="col-xs-2">
@@ -113,7 +114,7 @@ $(document).ready(function(){
 									<input type="text" name="steps" required="required" autocomplete="off" />
 								</div>
 							</div>
-							<button class="add_step_button"><%=messages.getString("addanotherstep") %></button>
+							<button class="btn btn-primary add_step_button"><%=messages.getString("addanotherstep") %></button>
 							<div class="ingredient-wrapper" style="margin-bottom: 50px">
 							<h3><%=messages.getString("ingredients") %></h3>
 							<div class="row">
@@ -161,13 +162,14 @@ $(document).ready(function(){
 									</div>
 							</div>
 							</div>
-							<button class="add_field_button"><%=messages.getString("addanotheringredient") %></button>
-	                   		<button type="submit" value="cancel"><%=messages.getString("submit") %></button>
+							<button class="add_field_button btn btn-primary"><%=messages.getString("addanotheringredient") %></button>
+	                   		<button class="btn btn-primary" type="submit" value="submit"><%=messages.getString("submit") %></button>
 	                   </form>
 	                   </div>
 	               </div>
 	         </div>
 	     </div>
+	</div>	     
 </div>
 
 <%@include file="common/footer.jsp"%>

@@ -16,7 +16,8 @@
 
     <!-- Page Content -->
     <div class="container">
-    <h1 class="bg-primary"><%=messages.getString("myaccount") %></h1>
+    <div class="box">
+    <h1><%=messages.getString("myaccount") %></h1>
         <div class="row">
         	<div class="col-xs-5">
 				<p>(<a id="editButton" href="#"><%=messages.getString("edit") %></a>)</p>
@@ -61,14 +62,16 @@
 							<p style="margin-top:20px;"><strong><span class="req">*</span><%=messages.getString("username") %>:</strong></p>
 							<input onClick="this.select();" type="text" name="updateUsername" value="<%= username %>" required="required" autocomplete="off" />
 			         	</div>
-			         	<div class="updatebuttons">
-			         		<button type="button" id="updateCancelButton" class="button button-block" value="cancel">Cancel</button>
-			         		<button type="submit" class="button button-block" value="cancel"><%=messages.getString("submit") %></button>
+			         	<br>
+			         	<div class="text-center">
+			         		<button type="button" id="updateCancelButton" class="btn btn-primary" value="cancel">Cancel</button>
+			         		<button type="submit" class="btn btn-primary" value="submit"><%=messages.getString("submit") %></button>
 			         	</div>
 			         </form>
 			         </div>
 		     </div>
         </div>
-    </div>
+        </div>
+    </div><!-- end of container -->
 
 <%@include file="common/footer.jsp"%>

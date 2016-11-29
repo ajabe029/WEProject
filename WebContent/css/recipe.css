@@ -1,0 +1,44 @@
+body {
+    background: url('../img/recipebg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover 100% auto;
+    margin-top: 12%;
+}
+
+.direction ol {
+    counter-reset: step-counter;
+    display: table;
+}
+
+.direction li {
+  list-style:none;
+  counter-increment: step-counter;
+   margin-bottom: 40px;
+  text-indent:-89px; 
+margin-left:70px;
+}
+
+.direction li::before {
+	
+  margin-right: 30px;
+  content: counter(step-counter);
+  font-size: 80%;
+  background-color: rgb(255,255,255);
+  border-style: solid;
+  border-color: rgb(0,0,0);
+  color: black;
+  font-weight: bold;
+  padding: 15px 20px;
+  border-radius: 100px;
+}
+
+.box {
+	
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+    border-radius: 25px;
+}

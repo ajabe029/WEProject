@@ -7,7 +7,9 @@
 </script>
 
 <div class="container-fluid">
-	<h1 class="bg-primary text-center"><%=messages.getString("mysavedrecipes") %></h1>
+<div class="box">
+	<h1 class="text-center"><%=messages.getString("mysavedrecipes") %></h1>
+	<br>
 	<c:choose>
 		<c:when test="${recipes.isEmpty()}">
 			<p> No recipes. </p>
@@ -15,7 +17,7 @@
 		<c:otherwise>
 			<div class="panel-group" id="accordion">
 				<c:forEach items="${recipes}" var="recipe" varStatus="loop">
-	  				<div class="panel panel-info">
+	  				<div class="panel panel-default">
 	    				<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapse${loop.count}">
 		      				<h2 class="panel-title">
 		        				<a class="accordion-toggle">${loop.count}. ${recipe.name}</a>
@@ -25,10 +27,10 @@
 		      				<div class="panel-body">
 		      					<div class="row">
 			      					<div class="col-xs-2">
-			      						<img class="media-object" src="http://www.placehold.it/150.png" alt="Placeholder">
+			      						<img class="media-object" src="http://www.placehold.it/150.png" alt="Placeholder" class="img-responsive">
 			      					</div>
 			      					<div class="col-xs-8">
-			      					<div class="panel panel-success">
+			      					<div class="panel panel-info">
 										<div class="panel-heading">Description:</div>
 										<div class="panel-body">
 										<c:if test="${empty recipe.description}">
@@ -52,6 +54,8 @@
 	<div class="row col-xs-12 text-center">
 		<a href="addrecipe.jsp" class="btn btn-info" role="button"><%=messages.getString("add")%> <%=messages.getString("new")%> <%=messages.getString("recipe")%></a>
 		<a href="#" class="btn btn-info" role="button" disabled="disabled"><%=messages.getString("delete")%> <%=messages.getString("recipe")%></a>
+	</div>
+	<br>
 	</div>
 </div>
   

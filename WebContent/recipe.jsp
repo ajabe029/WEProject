@@ -3,60 +3,40 @@
 <%@ page import="com.user.*" %>
 
 <div class="container-fluid">
-<table class="table table-condensed" style="border-collapse:collapse;">
-    <thead>
-        <tr>
-            <th>Recipe #</th>
-            <th>Recipe Name</th>
-            <th>Description</th>
-            <th>Preparation Time</th>
-            <th>Cooking Time</th>
-            <th>Date Submitted</th>
-            <th>Date Updated</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach items="${recipeDetails}" var="recipe">
-            <tr>
-            	<td>${recipe.recipeID}</td>
-            	<td>${recipe.name}</td>
-            	<td>${recipe.description}</td>
-            	<td>${recipe.preptime}</td>
-            	<td>${recipe.cooktime}</td>
-            	<td>${recipe.datecreated}</td>
-            	<td>${recipe.dateupdated}</td>
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>    
-</div>
+	<div class="box">
+		<div class="text-center">
+			<h1 class="recipe-title">${recipeDetails[0].name}</h1>
+			<p><strong><%=messages.getString("by")%>:</strong> <%out.print(username);%> - ${recipeDetails[0].datecreated}</p>
+		</div>	
 
-<section class="container-fluid">
-
-<div class="row">
-	<div class="col-xs-6">
-		<p>Prep. Time: <strong><c:out value="${recipeDetails[0].preptime}"/></strong></p>
-		<p>Cook Time: <strong><c:out value="${recipeDetails[0].cooktime}"/></strong></p>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-xs-6">
+		<!-- carosel slide show -->
+	
+		<!-- prepare time, cook time -->
+		<div class="text-right">
+		 	<div class="time-info"><strong>Time to prepare: </strong> 20 Mins</div>
+		 	<div class="time-info"><strong>Time to cook: </strong> 1 Hr</div>
+	 	</div> 
+	     
+		<!-- description goes here -->
+		<p>Pair this delicious dish with a risotto and a nice bottle of wine. This Italian favorite is easy to make and sure to impress your guests.</p>
+		
+		<h3>Ingredients</h3>
 		<ul class="bullets">
-		<c:forEach items="${recipeIngredients}" var="ingredients">
-			<li>${ingredients.ingredientName} ${ingredients.amountRequired} ${ingredients.units}</li>
-		</c:forEach>
+			<c:forEach items="${recipeIngredients}" var="ingredients">
+				<li>${ingredients.ingredientName} - ${ingredients.amountRequired} ${ingredients.units}</li>
+			</c:forEach>
 		</ul>
+	
+		<h3>Directions</h3>
+		<br>
+		<ol class="direction">
+			<c:forEach items="${recipeSteps}" var="steps" varStatus="loop">
+				<li>
+				${steps.steptext}
+				</li>
+			</c:forEach>
+		</ol>
 	</div>
-</div>
-
-<div class="row">
-	<div class="col-xs-6">
-	<c:forEach items="${recipeSteps}" var="steps" varStatus="loop">
-		${loop.count}. ${steps.steptext} <br>
-	</c:forEach>
-	</div>
-</div>
-</section>
+</div><!-- /.container -->
 
 <%@include file="common/footer.jsp"%>
