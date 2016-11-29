@@ -91,7 +91,7 @@ $(document).ready(function(){
 							</div>
 							<div class="update-field">
 								<label for="recDescription"><%=messages.getString("description") %></label>
-								<input type="text" name="recDescription" autocomplete="off"/>
+								<textarea name="recDescription" style="width:70%;line-height:30px;font-size:14px;padding:2px 5px;"></textarea>
 							</div>
 							<div class="row">
 								<div class="col-xs-2">
