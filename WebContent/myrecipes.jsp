@@ -7,7 +7,7 @@
 </script>
 
 <div class="container-fluid">
-	<h1 class="bg-primary text-center">My Recipes</h1>
+	<h1 class="bg-primary text-center"><%=messages.getString("mysavedrecipes") %></h1>
 	<c:choose>
 		<c:when test="${recipes.isEmpty()}">
 			<p> No recipes. </p>

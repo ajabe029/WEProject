@@ -29,23 +29,5 @@
 	    <script src="js/ie-emulation-modes-warning.js"></script>
   	</head>
   	<body>
-  	<%@page import="java.util.ResourceBundle"%>
-	<%@page import="java.util.Locale"%>
-  	
-  	<%
-  	Locale currentLocale;
-  	ResourceBundle messages;
-  	if(session!= null && session.getAttribute("language") != null){
-  		String language = session.getAttribute("language").toString();
-		String country = "CA";
-		currentLocale = new Locale(language, country);
-		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-  	} else {
-  		session.setAttribute("language", "EN");
-  		currentLocale = new Locale("EN", "CA");
-		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-  	}
-  	
-  	%>
 	
 	<input type="hidden" id="lang"/>

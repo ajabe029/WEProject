@@ -6,7 +6,7 @@
 		<div class="col-xs-4">
 			<div class="panel">
 				<div class="panel-heading">
-					<h2>Change Password</h2>
+					<h2><%=messages.getString("changepassword") %></h2>
 				</div>
 				<div class="panel-body">
 					<% if(request.getAttribute("errorMessage")!=null){ %>
@@ -16,18 +16,18 @@
 						    <% } %>
 					<form action="changepassword" onsubmit="return confirmPassword()" method="post">
 						<div class="update-field">
-							<label for="currentPassword">Current Password:<span class="req">*</span></label>
+							<label for="currentPassword"><%=messages.getString("currentpassword") %>:<span class="req">*</span></label>
 							<input type="password" name="currentPassword" required="required" autocomplete="off"/>
 						</div>
 						<div class="update-field">
-							<label for="newPassword">New Password:<span class="req">*</span></label>
+							<label for="newPassword"><%=messages.getString("newpassword") %>:<span class="req">*</span></label>
 							<input id="passwordField" type="password" name="newPassword" required="required" autocomplete="off"/>
 						</div>
 						<div class="update-field" style="margin-bottom: 20px">
-							<label for="confirmNewPassword">Confirm New Password:<span class="req">*</span></label>
+							<label for="confirmNewPassword"><%=messages.getString("confirmnewpassword") %>:<span class="req">*</span></label>
 							<input id="confirmPasswordField" type="password" name="confirmNewPassword" required="required" autocomplete="off"/>
 						</div>
-						<button type="submit" value="Submit">Change Password</button>
+						<button type="submit" value="Submit"><%=messages.getString("changepassword") %></button>
 					</form>
 				</div>
 			</div>

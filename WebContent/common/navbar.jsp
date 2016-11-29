@@ -1,4 +1,20 @@
-<%
+	<%@page import="java.util.ResourceBundle"%>
+	<%@page import="java.util.Locale"%>
+  	
+  	<%
+  	Locale currentLocale;
+  	ResourceBundle messages;
+  	if(session!= null && session.getAttribute("language") != null){
+  		String language = session.getAttribute("language").toString();
+		String country = "CA";
+		currentLocale = new Locale(language, country);
+		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+  	} else {
+  		session.setAttribute("language", "EN");
+  		currentLocale = new Locale("EN", "CA");
+		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+  	}
+
 		String username = null;
 		if(session.getAttribute("username") == null){
 			response.sendRedirect("index.jsp");
@@ -26,17 +42,17 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="myinventory">My Inventory</a>
+                        <a href="myinventory"><%=messages.getString("myinventory") %></a>
                     </li>
                     <li>
-                        <a href="myrecipes">My Saved Recipes</a>
+                        <a href="myrecipes"><%=messages.getString("mysavedrecipes") %></a>
                     </li>
                     <li class="dropdown">
-          				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Welcome <% out.print(username); %> <span class="caret"></span></a>
+          				<a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%=messages.getString("welcome") %> <% out.print(username); %> <span class="caret"></span></a>
           				<ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-				            <li><a href="myaccount.jsp">My Account</a></li>
-				            <li><a href="reportbug.jsp">Report Bug</a></li>
-				            <li><a href="logout.jsp">Logout</a></li>
+				            <li><a href="myaccount.jsp"><%=messages.getString("myaccount") %></a></li>
+				            <li><a href="reportbug.jsp"><%=messages.getString("reportbug") %></a></li>
+				            <li><a href="logout.jsp"><%=messages.getString("logout") %></a></li>
 				            <li role="separator" class="divider"></li>
 				            <%if(session.getAttribute("language").toString().equals("EN")){ %>
 				            <li><a href="changeLang.jsp">French</a></li>
