@@ -42,7 +42,7 @@ if(session.getAttribute("user_id")!=null){
 	           	<h2 class="panel-heading"><%=messages.getString("mysavedrecipes")%></h2>
 	            	<div class="panel-body">
 	               	<%if (recipeList.isEmpty()){ %>
-	               		<p> no recipes </p>
+	               		<p class="text-center"><%=messages.getString("norecipe") %></p>
 	               	<%}else{ %>
 						<div class="panel-group" id="accordion">
 							<% for(int i = 0; i < recipeList.size(); i++){%>
@@ -97,7 +97,7 @@ if(session.getAttribute("user_id")!=null){
 	            <h2 class="panel-heading"><%=messages.getString("myinventory")%></h2>
 		            <div class="panel-body">
 	      	        <%if (inventoryList.isEmpty()){ %>
-		            	<p> no items in inventory </p>
+		            	<p class="text-center"><%=messages.getString("noitems") %></p>
 		            <%}else{ %>
 			            <div class="panel-group" id="invaccordion">
 							<%for(int i=0; i < inventoryList.size(); i++){ %>

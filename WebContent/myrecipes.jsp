@@ -16,7 +16,7 @@
 	<br>
 	<c:choose>
 		<c:when test="${recipes.isEmpty()}">
-			<p> No recipes. </p>
+			<p class="text-center"><%=messages.getString("norecipe") %></p>
 		</c:when>
 		<c:otherwise>
 			<div class="panel-group" id="accordion">

@@ -19,27 +19,27 @@ System.out.println(request.getHeader("Referer")); %>
 		<div class="text-center">
 			<h1 class="recipe-title">${recipeDetails[0].name}</h1>
 			<p><strong><%=messages.getString("by")%>:</strong> <%out.print(username);%> - ${recipeDetails[0].datecreated}</p>
+			<p><strong><%=messages.getString("timeprep")%>:</strong>${recipeDetails[0].preptime} - <strong><%=messages.getString("timecook")%>:</strong>${recipeDetails[0].cooktime}</p>
 		</div>	
 
 		<!-- carosel slide show -->
-	
-		<!-- prepare time, cook time -->
-		<div class="text-right">
-		 	<div class="time-info"><strong>Time to prepare: </strong> 20 Mins</div>
-		 	<div class="time-info"><strong>Time to cook: </strong> 1 Hr</div>
-	 	</div> 
 	     
 		<!-- description goes here -->
-		<p>Pair this delicious dish with a risotto and a nice bottle of wine. This Italian favorite is easy to make and sure to impress your guests.</p>
+		<h3><%=messages.getString("description") %></h3>
+		<div class="row">
+			<div class="col-xs-8">
+				<p style="margin-left: 25px;">${recipeDetails[0].description}</p>
+			</div>
+		</div>
 		
-		<h3>Ingredients</h3>
+		<h3><%=messages.getString("ingredients") %></h3>
 		<ul class="bullets">
 			<c:forEach items="${recipeIngredients}" var="ingredients">
 				<li>${ingredients.ingredientName} - ${ingredients.amountRequired} ${ingredients.units}</li>
 			</c:forEach>
 		</ul>
 	
-		<h3>Directions</h3>
+		<h3><%=messages.getString("directions") %></h3>
 		<br>
 		<ol class="direction">
 			<c:forEach items="${recipeSteps}" var="steps" varStatus="loop">

@@ -21,7 +21,7 @@
 				<h2 class="text-center"><%=messages.getString("myfood") %></h2>
 				<c:choose>
 						<c:when test="${inventory.isEmpty()}">
-							<p> No items in inventory. </p>
+							<p class="text-center"><%=messages.getString("noitems") %></p>
 						</c:when>
 						<c:otherwise>
 							<div class="panel-group" id="accordion">

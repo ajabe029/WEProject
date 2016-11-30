@@ -10,7 +10,7 @@ String title = messages.getString("welcomeTitleAdmin");
 </script>
 <form method="post" action="">
 <div class="container">
-
+<div class="box">
 <table class="table table-condensed" style="border-collapse:collapse;">
     <thead>
         <tr>
@@ -37,6 +37,7 @@ String title = messages.getString("welcomeTitleAdmin");
         </c:forEach>
     </tbody>
 </table>    
+</div>
 </div>
 </form>
 
