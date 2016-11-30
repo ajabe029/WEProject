@@ -3,7 +3,19 @@
 <%@ page import="com.user.*" %>
 
 <div class="container-fluid">
+<% 
+System.out.println(request.getHeader("Referer")); %>
 	<div class="box">
+	    <ol class="breadcrumb color-change-recipe">
+  			<li class="breadcrumb-item"><a href="welcome.jsp"><%=messages.getString("welcomeTitle")%></a></li>
+  			<%if(!request.getHeader("Referer").equals("http://localhost:8080/WebEnterpriseProject/welcome.jsp")){ %>
+  			<%if(request.getHeader("Referer").equals("http://localhost:8080/WebEnterpriseProject/myinventory")){ %>
+ 			<li class="breadcrumb-item"><a href="myinventory"><%=messages.getString("myinventory") %></a></li>
+ 			<%}else{ %>
+ 			<li class="breadcrumb-item"><a href="myrecipes"><%=messages.getString("mysavedrecipes") %></a></li>
+ 			<%}} %>
+ 			<li class="breadcrumb-item active"><%=messages.getString("recipe")%>: ${recipeDetails[0].name}</li>
+		</ol>
 		<div class="text-center">
 			<h1 class="recipe-title">${recipeDetails[0].name}</h1>
 			<p><strong><%=messages.getString("by")%>:</strong> <%out.print(username);%> - ${recipeDetails[0].datecreated}</p>

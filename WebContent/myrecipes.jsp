@@ -8,6 +8,10 @@
 
 <div class="container-fluid">
 <div class="box">
+    	<ol class="breadcrumb color-change-recipe">
+  			<li class="breadcrumb-item"><a href="welcome.jsp"><%=messages.getString("welcomeTitle")%></a></li>
+ 			<li class="breadcrumb-item active"><%=messages.getString("mysavedrecipes") %></li>
+		</ol>
 	<h1 class="text-center"><%=messages.getString("mysavedrecipes") %></h1>
 	<br>
 	<c:choose>

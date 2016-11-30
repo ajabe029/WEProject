@@ -78,11 +78,16 @@ $(document).ready(function(){
 
 <div class="container-fluid">
 <div class="box">
+	    <ol class="breadcrumb color-change-recipe">
+  			<li class="breadcrumb-item"><a href="welcome.jsp"><%=messages.getString("welcomeTitle")%></a></li>
+ 			<li class="breadcrumb-item"><a href="myinventory"><%=messages.getString("myinventory")%></a></li>
+ 			<li class="breadcrumb-item"><%=messages.getString("addfood")%></li>
+		</ol>	
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel color-change-recipe">
 				<div class="panel-heading">
-					<h2> Add Food </h2>
+					<h1 class="h2"><%=messages.getString("addfood")%></h1>
 				</div>
 				<div class="panel-body">
 					<form action="addfood" method="post">

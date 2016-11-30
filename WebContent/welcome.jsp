@@ -22,12 +22,20 @@ if(session.getAttribute("user_id")!=null){
 	document.title = "Welcome Page";
 </script>
 
-   <!-- Page Content -->
+<!-- Page Content -->
+
+
       
 <div class="container-fluid">
     <div class="box">
+    
+    	<ol class="breadcrumb color-change-recipe">
+  			<li class="breadcrumb-item active"><%=messages.getString("welcomeTitle")%></li>
+		</ol>
+		
 	    <h1 class="text-center"><%=messages.getString("welcome")%> <%out.print(username);%>!</h1>
 	    <br>
+	    
 	   	<div class="row">
 	  		<div class="col-xs-12">
 	     		<div class="panel color-change">
@@ -78,42 +86,51 @@ if(session.getAttribute("user_id")!=null){
 	     		</div>
 	     	</div>
 	     </div><!-- End of Row -->
+	     	    
+    </div><!-- End of box -->
+    </div>
+    <div class="container-fluid">
+	    <div class="box"> 
 	     <div class="row">
 	     	<div class="col-xs-12">
 				<div class="panel color-change">
 	            <h2 class="panel-heading"><%=messages.getString("myinventory")%></h2>
-	            <div class="panel-body">
-      	        <%if (inventoryList.isEmpty()){ %>
-	            	<p> no items in inventory </p>
-	            <%}else{ %>
-	            <div class="panel-group" id="invaccordion">
-					<%for(int i=0; i < inventoryList.size(); i++){ %>
-		  				<div class="panel panel-default">
-		    				<div class="panel-heading" data-toggle="collapse" data-parent="#invaccordion" data-target="#invcollapse<%=i%>">
-			      				<h2 class="panel-title">
-			        				<a class="accordion-toggle"><%=i+1%>. <%=inventoryList.get(i).getIngredient()%></a>
-			      				</h2>
-		    				</div>
-			    			<div id="invcollapse<%=i%>" class="panel-collapse collapse">
-			      				<div class="panel-body">
-			      					<div class="row">
-				      					<div class="col-xs-12">
-				      						<%=inventoryList.get(i).getQuantity()%> <%=inventoryList.get(i).getUnits()%>
-				      					</div>
-			      					</div>
-			      				</div>
-			    			</div>
-		  				</div>
-		  			<%}} %>	
-		  		</div>
-				</div><!-- end of body -->
-	                <div class="text-center">
-	                	<a href="myinventory" class="btn btn-info" role="button"><%=messages.getString("manage")%> <%=messages.getString("inventory")%></a>
-	                </div>
-	                <br>
-	            </div>
+		            <div class="panel-body">
+	      	        <%if (inventoryList.isEmpty()){ %>
+		            	<p> no items in inventory </p>
+		            <%}else{ %>
+			            <div class="panel-group" id="invaccordion">
+							<%for(int i=0; i < inventoryList.size(); i++){ %>
+				  				<div class="panel panel-default">
+				    				<div class="panel-heading" data-toggle="collapse" data-parent="#invaccordion" data-target="#invcollapse<%=i%>">
+					      				<h2 class="panel-title">
+					        				<a class="accordion-toggle"><%=i+1%>. <%=inventoryList.get(i).getIngredient()%></a>
+					      				</h2>
+				    				</div>
+					    			<div id="invcollapse<%=i%>" class="panel-collapse collapse">
+					      				<div class="panel-body">
+					      					<div class="row">
+						      					<div class="col-xs-12">
+						      						<%=inventoryList.get(i).getQuantity()%> <%=inventoryList.get(i).getUnits()%>
+						      					</div>
+					      					</div>
+					      				</div>
+					    			</div>
+				  				</div>
+				  			<%}} %>	
+				  		</div>
+			            <div class="text-center">
+	                		<a href="myinventory" class="btn btn-info" role="button"><%=messages.getString("manage")%> <%=messages.getString("inventory")%></a>
+	                	</div>
+	                	<br>
+					</div><!-- end of body -->
+                </div>
 	      	</div>
+	    </div><!-- End of Row -->
 	    </div>
-    </div><!-- End of box -->
-</div><!-- End of container --> 
+
+</div><!-- End of container -->
+
+
+                <br> 
 <%@include file="common/footer.jsp"%>
