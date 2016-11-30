@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="welcome.jsp">
-                <img style="width: 64px;" src="img/anonymous_mask.ico" alt="Incredible Recipes">Incredible Recipes</a>
+                <img style="width: 64px;" src="img/RecipeBook.ico" alt="Incredible Recipes">Incredible Recipes</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
