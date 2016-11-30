@@ -10,7 +10,7 @@
 <%
 			int count = 1;
 			String jspPath = session.getServletContext().getRealPath("/");
-			String txtFilePath = jspPath + "/text/ingredientslist.txt";
+			String txtFilePath = jspPath + "/text/" + messages.getString("ingredientsfile");
             BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
             //BufferedReader br = new InputStreamReader(new FileInputStream(txtFilePath));
             StringBuilder sb = new StringBuilder();
