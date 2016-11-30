@@ -32,7 +32,6 @@ public class InventoryDAO {
         try {
             connection = ConnectionFactory.getConnection();
             query = connection.prepareStatement(queryString);
-            System.out.println(queryString);
             query.setInt(1, userId);
             rs = query.executeQuery();
             while(rs.next()){

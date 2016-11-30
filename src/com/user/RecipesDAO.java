@@ -32,7 +32,6 @@ public class RecipesDAO {
         try {
             connection = ConnectionFactory.getConnection();
             query = connection.prepareStatement(queryString);
-            System.out.println(queryString);
             query.setInt(1, userId);
             rs = query.executeQuery();
             while(rs.next()){
@@ -101,7 +100,6 @@ public class RecipesDAO {
             connection = ConnectionFactory.getConnection();
             query = connection.prepareStatement(queryString);
             query.setInt(1, recipeId);
-            System.out.println(queryString);
             rs = query.executeQuery();
             
             while(rs.next()){
@@ -131,7 +129,6 @@ public class RecipesDAO {
 			connection = ConnectionFactory.getConnection();
             query = connection.prepareStatement(queryString);
             query.setInt(1, recipeId);
-            System.out.println(queryString);
             rs = query.executeQuery();
             
             while(rs.next()){
@@ -160,7 +157,6 @@ public class RecipesDAO {
             connection = ConnectionFactory.getConnection();
             query = connection.prepareStatement(queryString);
             query.setInt(1, recipeId);
-            System.out.println(queryString);
             rs = query.executeQuery();
             
             while(rs.next()){

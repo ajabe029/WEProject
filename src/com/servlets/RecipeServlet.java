@@ -57,8 +57,14 @@ public class RecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		int userId = 0;
 		HttpSession session = request.getSession(false);
-		int userId = (int) session.getAttribute("user_id");
+		if(session == null || session.getAttribute("user_id") == null){
+			response.sendRedirect("index.jsp");
+			return;
+		}else{
+			userId = (int) session.getAttribute("user_id");
+		}
 		
 		RecipesDAO recipesDao = new RecipesDAO();
 		List<Recipes> recipes = null;

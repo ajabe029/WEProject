@@ -26,7 +26,6 @@ public class RecipeDetailsServlet extends HttpServlet {
 		List<Steps> steps = null;
 		List<Ingredients> ingredients = null;
 		int recipeId = Integer.parseInt(request.getParameter("recipe_id"));
-		//System.out.println(recipeId);
 		
 		try{
 			recipe = recipesDao.getRecipe(recipeId);

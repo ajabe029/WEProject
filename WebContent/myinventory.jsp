@@ -5,6 +5,8 @@
 	document.title = "Inventory";
 </script>
 
+
+
 <div class="container-fluid">
 	<div class="box">
 	<h1 class="text-center"><%=messages.getString("myinventory") %></h1>
@@ -37,19 +39,48 @@
 						    			</div>
 					  				</div>
 					  			</c:forEach>
-					  			<br>
-	  							<div class="row col-xs-12 text-center">
-									<a href="addfood.jsp" class="btn btn-info" role="button"><%=messages.getString("AddNewItem")%></a>
-								</div>
-								<br>
 					  		</div>	
 					  	</c:otherwise>
 				</c:choose>
+				<br>
+	  							<div class="text-center">
+									<a href="addfood.jsp" class="btn btn-info" role="button"><%=messages.getString("AddNewItem")%></a>
+								</div>
+								<br>
 				</div>
 			</div><!-- End of column -->
 			<div class="col-xs-8">
 				<div class="panel color-change">
-				<h2 class="text-center"><%=messages.getString("myrecipes") %></h2>	
+				<h2 class="text-center"><%=messages.getString("myrecipes") %></h2>
+				<c:choose>
+						<c:when test="${matchedRecipes.isEmpty()}">
+							<p> No suggestions. </p>
+						</c:when>
+						<c:otherwise>
+							<div class="panel-group" id="accordion2">
+								<c:forEach items="${matchedRecipes}" var="matchedRecipes" varStatus="loop">
+					  				<div class="panel panel-default">
+					    				<div class="panel-heading" data-toggle="collapse" data-parent="#accordion2" data-target="#collapsemr${loop.count}">
+						      				<h2 class="panel-title">
+						        				<a class="accordion-toggle">${loop.count}. ${matchedRecipes.name}</a>
+						      				</h2>
+					    				</div>
+						    			<div id="collapsemr${loop.count}" class="panel-collapse collapse">
+						      				<div class="panel-body">
+						      					<div class="row">
+							      					<div class="col-xs-12">
+							      						${matchedRecipes.description}
+							      						<br><br>
+		      											<a href="recipe?recipe_id=${matchedRecipes.recipeID}">For full recipe click here...</a>
+							      					</div>
+						      					</div>
+						      				</div>
+						    			</div>
+					  				</div>
+					  			</c:forEach>
+					  		</div>	
+					  	</c:otherwise>
+				</c:choose>	
 				</div>
 			</div>
 		</div>

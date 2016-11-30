@@ -3,6 +3,7 @@ package com.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jdbc.db.DBFront;
+import com.user.Ingredients;
 import com.user.Inventory;
 import com.user.InventoryDAO;
 import com.user.Recipes;
 import com.user.RecipesDAO;
+
 
 public class FoodServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -36,13 +39,11 @@ public class FoodServlet extends HttpServlet{
 
 		if(DBFront.addFood(username, ingredients, ingredientsQuantities, ingredientsQUnits) > 0){  
 			request.setAttribute("recipeSuccessMessage", "Food added successfully to inventory");
-			RequestDispatcher rd=request.getRequestDispatcher("myinventory.jsp");  
-			rd.forward(request,response);  
+			response.sendRedirect("myinventory");
 		}  
 		else{  
 			request.setAttribute("recipeErrorMessage", "Error adding food to inventory");  
-			RequestDispatcher rd=request.getRequestDispatcher("myinventory.jsp");  
-			rd.forward(request,response);  
+			response.sendRedirect("myinventory");
 		}  
 
 		out.close();  
@@ -51,19 +52,50 @@ public class FoodServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		int userId = 0;
 		HttpSession session = request.getSession(false);
-		int userId = (int) session.getAttribute("user_id");
+		if(session == null || session.getAttribute("user_id") == null){
+			response.sendRedirect("index.jsp");
+			return;
+		}else{
+			userId = (int) session.getAttribute("user_id");
+		}
 		
 		InventoryDAO inventoryDao = new InventoryDAO();
+		RecipesDAO recipeDao = new RecipesDAO();
+		List<Recipes> matchedRecipes = new ArrayList<Recipes>();
+		List<Recipes> recipes = null;
 		List<Inventory> inventory = null;
+		List<Ingredients> recipeIngredients = null;
 		
 		try{
 			inventory = inventoryDao.getUserInventory(userId);
+			recipes = recipeDao.getRecipes(userId);
+			
+			int count = 0;
+			for(int j = 0; j < recipes.size(); j++){
+				recipeIngredients = recipeDao.getRecipeIngredients(recipes.get(j).getRecipeID());
+				count = 0;
+				for(int i = 0; i < recipeIngredients.size(); i++){
+					if(count >= (int)(recipeIngredients.size()/2)){
+						matchedRecipes.add(recipeDao.getRecipe(recipes.get(j).getRecipeID()).get(0));
+						break;
+					}
+					for(int k = 0; k < inventory.size(); k++){
+						if(inventory.get(k).getIngredient().equals(recipeIngredients.get(i).getIngredientName()) 
+								&& inventory.get(k).getQuantity() >= recipeIngredients.get(i).getAmountRequired() 
+								&& inventory.get(k).getUnits().equals(recipeIngredients.get(i).getUnits())){
+								count++;
+							}
+					}
+				}
+			}
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
 		
 		request.setAttribute("inventory", inventory);
+		request.setAttribute("matchedRecipes", matchedRecipes);
 		request.getRequestDispatcher("myinventory.jsp").forward(request, response);
 	}
 }
