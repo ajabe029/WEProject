@@ -7,7 +7,7 @@
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	    <meta name="description" content="sign up page / splash page">
 	    <meta name="author" content="Parsnip Systems">
-	    <link rel="icon" href="img/anonymous_mask.ico">
+	    <link rel="icon" href="img/RecipeBook.ico">
 	
 	    <title>Incredible Recipes</title>
 	
